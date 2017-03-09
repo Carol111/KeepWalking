@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class MainActivity extends AppCompatActivity{
 
     // Muda a fonte
     private void mudarFonte(TextView tv, String fonte) {
