@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,9 +13,8 @@
             android:id="@+id/textKeepWalking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Keep Walking"
+            android:text="@string/app_name"
             android:textSize="35sp"
-            android:textStyle="italic"
             android:layout_alignBottom="@+id/menuPopup"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -29,8 +27,7 @@
             android:id="@+id/textCaminhada"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Caminhada"
-            android:textStyle="italic"
+            android:text="@string/app_subname"
             android:textSize="16sp"
             android:layout_below="@+id/textKeepWalking"
             android:layout_centerHorizontal="true" />
@@ -40,79 +37,99 @@
             android:id="@+id/menuPopup"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginLeft="310dp"
+            android:layout_alignRight="@+id/textKeepWalking"
             android:background="@drawable/menu"
             android:onClick="showPopup"/>
 
         <!-- Passos -->
         <FrameLayout
-            android:id="@+id/fLPassos"
-            android:layout_width="100dip"
-            android:layout_height="100dip"
+        android:id="@+id/fLPassos"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/circle" />
+
+        <!-- Grid para alinhar Tempo e Distancia -->
+        <GridLayout
+            android:id="@+id/grTD"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/fLPassos"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="90dp"
-            android:background="@drawable/circle"></FrameLayout>
+            android:layout_marginTop="20dp">
 
-        <!-- Tempo -->
-        <FrameLayout
-            android:id="@+id/fLTempo"
-            android:layout_width="100dip"
-            android:layout_height="100dip"
-            android:layout_marginLeft="72dp"
-            android:layout_marginTop="210dp"
-            android:background="@drawable/circle"></FrameLayout>
+            <!-- Tempo -->
+            <FrameLayout
+                android:id="@+id/fLTempo"
+                android:layout_width="100dip"
+                android:layout_height="100dip"
+                android:background="@drawable/circle" />
 
-        <!-- Distancia -->
-        <FrameLayout
-            android:id="@+id/fLDistancia"
-            android:layout_width="100dip"
-            android:layout_height="100dip"
-            android:layout_marginLeft="212dp"
-            android:layout_marginTop="210dp"
-            android:background="@drawable/circle"></FrameLayout>
+            <!-- Distancia -->
+            <FrameLayout
+                android:id="@+id/fLDistancia"
+                android:layout_width="100dip"
+                android:layout_height="100dip"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/circle" />
+
+        </GridLayout>
+
+        <!-- Grid para alinhar Velocidade e Kcal -->
+        <GridLayout
+            android:id="@+id/grVK"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/grTD"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp">
 
         <!-- Velocidade -->
-        <FrameLayout
-            android:id="@+id/fLVelocidade"
-            android:layout_width="100dip"
-            android:layout_height="100dip"
-            android:layout_marginLeft="72dp"
-            android:layout_marginTop="340dp"
-            android:background="@drawable/circle"></FrameLayout>
+            <FrameLayout
+                android:id="@+id/fLVelocidade"
+                android:layout_width="100dip"
+                android:layout_height="100dip"
+                android:background="@drawable/circle" />
 
         <!-- Kcal -->
-        <FrameLayout
-            android:id="@+id/fLKcal"
-            android:layout_width="100dip"
-            android:layout_height="100dip"
-            android:layout_marginLeft="212dp"
-            android:layout_marginTop="340dp"
-            android:background="@drawable/circle"></FrameLayout>
+            <FrameLayout
+                android:id="@+id/fLKcal"
+                android:layout_width="100dip"
+                android:layout_height="100dip"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/circle" />
 
-        <!-- Botao Inciar -->
-        <Button
-            android:id="@+id/btIniciar"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="72dp"
-            android:layout_marginTop="480dp"
-            android:background="@drawable/rectangle"
-            android:fontFamily="sans-serif"
-            android:textStyle="italic"
-            android:text="Iniciar"
-            android:textColor="#FF525252"/>
+        </GridLayout>
 
-        <!-- Botao Zerar -->
-        <Button
-            android:id="@+id/btZerar"
-            android:layout_width="100dp"
+        <!-- Grid para alinhar os Botoes Iniciar/Parar e Zerar -->
+        <GridLayout
+            android:id="@+id/grBt"
+            android:layout_width="250dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="212dp"
-            android:layout_marginTop="480dp"
-            android:background="@drawable/rectangle"
-            android:fontFamily="sans-serif"
-            android:textStyle="italic"
-            android:text="Zerar"
-            android:textColor="#FF525252"/>
+            android:layout_below="@+id/grVK"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp">
+
+            <!-- Botao Inciar -->
+            <Button
+                android:id="@+id/btIniciar"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:background="@drawable/rectangle"
+                android:text="@string/inic"
+                android:textColor="#FF525252"/>
+
+            <!-- Botao Zerar -->
+            <Button
+                android:id="@+id/btZerar"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/rectangle"
+                android:text="@string/zerar"
+                android:textColor="#FF525252"/>
+
+        </GridLayout>
 
 </RelativeLayout>
