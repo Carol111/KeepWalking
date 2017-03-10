@@ -32,9 +32,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         TextView textCaminhada = (TextView) findViewById(R.id.textCaminhada);
         mudarFonte(textKeepWalking, "fonts/stone.TTF");
         mudarFonte(textCaminhada, "fonts/stone.TTF");
-
-        // Não utilizado (por enquanto)
-        //Button btMenuPopup = (Button) findViewById(R.id.menuPopup);
     }
 
     //
@@ -44,14 +41,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         inflater.inflate(R.menu.menu_main, popup.getMenu());
         popup.show();
     }
-
-    /* Não utilizado (por enquanto)
-    public void showMenu(View v){
-        PopupMenu popup = new PopupMenu(this, v);
-        popup.setOnMenuItemClickListener(this);
-        popup.inflate(R.menu.menu_main);
-        popup.show();
-    }*/
 
     // Acoes do Menu Popup
     public boolean onMenuItemClick (MenuItem item){
