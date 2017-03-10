@@ -15,12 +15,12 @@
             android:layout_height="wrap_content"
             android:text="@string/app_name"
             android:textSize="35sp"
+            android:gravity="center"
             android:layout_alignBottom="@+id/menuPopup"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:gravity="center"/>
+            android:layout_alignLeft="@+id/grTD"
+            android:layout_alignStart="@+id/grTD"
+            android:layout_alignRight="@+id/grTD"
+            android:layout_alignEnd="@+id/grTD" />
 
         <!-- Texto Caminhada -->
         <TextView
@@ -35,11 +35,12 @@
         <!-- Menu Popup -->
         <Button
             android:id="@+id/menuPopup"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignRight="@+id/textKeepWalking"
-            android:background="@drawable/menu"
-            android:onClick="showPopup"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_more_vert_black_24dp"
+            android:onClick="showPopup"
+            android:layout_toRightOf="@+id/textKeepWalking"/>
 
         <!-- Passos -->
         <FrameLayout
@@ -116,7 +117,7 @@
                 android:id="@+id/btIniciar"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
-                android:background="@drawable/rectangle"
+                android:background="@drawable/rectangle_light"
                 android:text="@string/inic"
                 android:textColor="#FF525252"/>
 
@@ -126,9 +127,9 @@
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="50dp"
-                android:background="@drawable/rectangle"
+                android:background="@drawable/rectangle_dark"
                 android:text="@string/zerar"
-                android:textColor="#FF525252"/>
+                android:textColor="#DDDDDD"/>
 
         </GridLayout>
 
