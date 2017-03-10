@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/colormain"
+    tools:context="com.example.univasf.keepwalking.MainActivity">
+
+    <!-- Grade -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/grade">
+
+    </FrameLayout>
+
+    <!-- Texto Keep Walking -->
+    <TextView
+        android:id="@+id/textKeepWalking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="60sp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"/>
+
+        <!-- Texto Caminhada -->
+        <TextView
+            android:id="@+id/textCaminhada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_subname"
+            android:textSize="35sp"
+            android:layout_below="@+id/textKeepWalking"
+            android:layout_centerHorizontal="true" />
+
+        <!-- Menu Popup -->
+        <Button
+            android:id="@+id/menuPopup"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/ic_more_vert_black"
+            android:onClick="showPopup"
+            android:layout_alignRight="@+id/textKeepWalking"/>
+
+</RelativeLayout>

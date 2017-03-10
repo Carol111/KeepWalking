@@ -7,7 +7,243 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.univasf.keepwalking.MainActivity">
 
-   <include layout="@layout/content_main"
+   <include layout="@layout/header"
         android:id="@+id/include" />
+
+   <!-- Passos -->
+   <FrameLayout
+       android:id="@+id/fLPassos"
+       android:layout_width="200dip"
+       android:layout_height="200dip"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="200dp"
+       android:background="@drawable/circle">
+
+      <TextView
+          android:id="@+id/valuePassos"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="10dp"
+          android:gravity="center"
+          android:text="@string/valueDefault"
+          android:textColor="@color/colorAccent"
+          android:textSize="110sp" />
+
+      <TextView
+          android:id="@+id/textPassos"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="140dp"
+          android:gravity="center"
+          android:text="@string/cPassos"
+          android:textSize="30sp"/>
+
+   </FrameLayout>
+
+   <!-- Grid para alinhar Tempo e Distancia -->
+   <GridLayout
+       android:id="@+id/grTD"
+       android:layout_width="500dp"
+       android:layout_height="200dp"
+       android:layout_below="@+id/fLPassos"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="60dp">
+
+      <!-- Tempo -->
+      <FrameLayout
+          android:id="@+id/fLTempo"
+          android:layout_width="200dip"
+          android:layout_height="200dip"
+          android:background="@drawable/circle">
+
+         <TextView
+             android:id="@+id/valueTempo"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="10dp"
+             android:gravity="center"
+             android:text="@string/valueDefault"
+             android:textColor="@color/colorAccent"
+             android:textSize="100sp" />
+
+         <TextView
+             android:id="@+id/textTempo"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="130dp"
+             android:textSize="30sp"
+             android:gravity="center"
+             android:text="@string/cTempo" />
+
+         <TextView
+             android:id="@+id/unitTempo"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="160dp"
+             android:gravity="center"
+             android:text="@string/min"
+             android:textSize="25sp" />
+
+      </FrameLayout>
+
+      <!-- Distancia -->
+      <FrameLayout
+          android:id="@+id/fLDistancia"
+          android:layout_width="200dip"
+          android:layout_height="200dip"
+          android:layout_marginLeft="100dp"
+          android:background="@drawable/circle">
+
+         <TextView
+             android:id="@+id/valueDistancia"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="10dp"
+             android:gravity="center"
+             android:text="@string/valueDefault"
+             android:textColor="@color/colorAccent"
+             android:textSize="100sp" />
+
+         <TextView
+             android:id="@+id/textDistancia"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="130dp"
+             android:textSize="30sp"
+             android:gravity="center"
+             android:text="@string/cDistancia" />
+
+         <TextView
+             android:id="@+id/unitDistancia"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="160dp"
+             android:gravity="center"
+             android:text="@string/m"
+             android:textSize="25sp" />
+
+      </FrameLayout>
+
+   </GridLayout>
+
+   <!-- Grid para alinhar Velocidade e Kcal -->
+   <GridLayout
+       android:id="@+id/grVK"
+       android:layout_width="500dp"
+       android:layout_height="200dp"
+       android:layout_below="@+id/grTD"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="60dp">
+
+      <!-- Velocidade -->
+      <FrameLayout
+          android:id="@+id/fLVelocidade"
+          android:layout_width="200dip"
+          android:layout_height="200dip"
+          android:background="@drawable/circle">
+
+         <TextView
+             android:id="@+id/valueVelocidade"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="10dp"
+             android:gravity="center"
+             android:text="@string/valueDefault"
+             android:textColor="@color/colorAccent"
+             android:textSize="100sp" />
+
+         <TextView
+             android:id="@+id/textVelocidade"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="130dp"
+             android:textSize="30sp"
+             android:gravity="center"
+             android:text="@string/cVelocidade" />
+
+         <TextView
+             android:id="@+id/unitVelocidade"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="160dp"
+             android:gravity="center"
+             android:text="@string/m_s"
+             android:textSize="25sp" />
+
+      </FrameLayout>
+
+      <!-- Kcal -->
+      <FrameLayout
+          android:id="@+id/fLCalorias"
+          android:layout_width="200dip"
+          android:layout_height="200dip"
+          android:layout_marginLeft="100dp"
+          android:background="@drawable/circle">
+
+         <TextView
+             android:id="@+id/valueCalorias"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="10dp"
+             android:gravity="center"
+             android:text="@string/valueDefault"
+             android:textColor="@color/colorAccent"
+             android:textSize="100sp" />
+
+         <TextView
+             android:id="@+id/textCalorias"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="130dp"
+             android:textSize="30sp"
+             android:gravity="center"
+             android:text="@string/cCalorias"/>
+
+         <TextView
+             android:id="@+id/unitCalorias"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="160dp"
+             android:gravity="center"
+             android:text="@string/kcal"
+             android:textSize="25sp" />
+
+      </FrameLayout>
+
+   </GridLayout>
+
+   <!-- Grid para alinhar os Botoes Iniciar/Parar e Zerar -->
+   <GridLayout
+       android:id="@+id/grBt"
+       android:layout_width="500dp"
+       android:layout_height="80dp"
+       android:layout_below="@+id/grVK"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="80dp">
+
+      <!-- Botao Inciar -->
+      <Button
+          android:id="@+id/btIniciar"
+          android:layout_width="200dp"
+          android:layout_height="80dp"
+          android:background="@drawable/rectangle_light"
+          android:text="@string/inic"
+          android:textSize="35sp"
+          android:textStyle="bold"
+          android:textColor="#FF525252"/>
+
+      <!-- Botao Zerar -->
+      <Button
+          android:id="@+id/btZerar"
+          android:layout_width="200dp"
+          android:layout_height="80dp"
+          android:layout_marginLeft="100dp"
+          android:background="@drawable/rectangle_dark"
+          android:text="@string/zerar"
+          android:textSize="35sp"
+          android:textStyle="bold"
+          android:textColor="#DDDDDD"/>
+
+   </GridLayout>
 
 </RelativeLayout>
