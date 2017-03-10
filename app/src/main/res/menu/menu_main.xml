@@ -1,0 +1,31 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@null"
+    android:fitsSystemWindows="true"
+    android:orientation="horizontal"
+    tools:context="com.example.univasf.keepwalking.MainActivity">
+
+    <!-- Acoes do Menu Popup -->
+
+    <!-- Acao Ajuda -->
+    <item
+        android:id="@+id/action_help"
+        android:orderInCategory="101"
+        android:title="@string/action_help"
+        app:showAsAction="never" />
+
+    <!-- Acao Sobre -->
+    <item
+        android:id="@+id/action_about"
+        android:orderInCategory="100"
+        android:title="@string/action_about" />
+
+    <!-- Acao Contatos -->
+    <item
+        android:id="@+id/action_contacts"
+        android:orderInCategory="101"
+        android:title="@string/action_contacts" />
+</menu>
