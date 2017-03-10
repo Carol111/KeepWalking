@@ -32,11 +32,23 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         mudarFonte(textKeepWalking, "fonts/stone.TTF");
         mudarFonte(textCaminhada, "fonts/stone.TTF");
 
+        // Circle Texts
+        TextView textPassos = (TextView) findViewById(R.id.textPassos);
+        TextView textTempo = (TextView) findViewById(R.id.textTempo);
+        TextView textDistancia = (TextView) findViewById(R.id.textDistancia);
+        TextView textVelocidade = (TextView) findViewById(R.id.textVelocidade);
+        TextView textCalorias = (TextView) findViewById(R.id.textCalorias);
+        mudarFonte(textPassos, "fonts/stone.TTF");
+        mudarFonte(textTempo, "fonts/stone.TTF");
+        mudarFonte(textDistancia, "fonts/stone.TTF");
+        mudarFonte(textVelocidade, "fonts/stone.TTF");
+        mudarFonte(textCalorias, "fonts/stone.TTF");
+
         // Buttons
         Button btIniciar = (Button) findViewById(R.id.btIniciar);
         Button btZerar = (Button) findViewById(R.id.btZerar);
-        mudarFonte(btIniciar, "fonts/moonFlower.ttf");
-        mudarFonte(btZerar, "fonts/moonFlower.ttf");
+        mudarFonte(btIniciar, "fonts/annabelle.ttf");
+        mudarFonte(btZerar, "fonts/annabelle.ttf");
     }
 
     // Menu Popup

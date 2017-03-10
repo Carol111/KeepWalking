@@ -46,7 +46,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/ic_more_vert_black_24dp"
+            android:background="@drawable/ic_more_vert_black"
             android:onClick="showPopup"
             android:layout_toRightOf="@+id/textKeepWalking"/>
 
@@ -268,7 +268,9 @@
                 android:layout_height="40dp"
                 android:background="@drawable/rectangle_light"
                 android:text="@string/inic"
-                android:textColor="#FF525252"/>
+                android:textColor="#FF525252"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <!-- Botao Zerar -->
             <Button
@@ -278,7 +280,9 @@
                 android:layout_marginLeft="50dp"
                 android:background="@drawable/rectangle_dark"
                 android:text="@string/zerar"
-                android:textColor="#DDDDDD"/>
+                android:textColor="#DDDDDD"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </GridLayout>
 
