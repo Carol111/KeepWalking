@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         mudarFonte(textKeepWalking, "fonts/stone.TTF");
         mudarFonte(textCaminhada, "fonts/stone.TTF");
 
+        TextView textSobre = (TextView) findViewById(R.id.textSobre);
+        mudarFonte(textSobre, "fonts/stone.TTF");
+
         // Circle Texts
         TextView textPassos = (TextView) findViewById(R.id.textPassos);
         TextView textTempo = (TextView) findViewById(R.id.textTempo);
@@ -49,6 +52,9 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         Button btZerar = (Button) findViewById(R.id.btZerar);
         mudarFonte(btIniciar, "fonts/annabelle.ttf");
         mudarFonte(btZerar, "fonts/annabelle.ttf");
+
+        Button btVoltar = (Button) findViewById(R.id.btVoltar);
+        mudarFonte(btVoltar, "fonts/annabelle.ttf");
     }
 
     // Menu Popup

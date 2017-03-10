@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.univasf.keepwalking.MainActivity">
+
+    <include layout="@layout/header"/>
+
+    <TextView
+        android:id="@+id/textSobre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:gravity="center"
+        android:text="@string/sobre"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/textDescricao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textSobre"
+        android:layout_marginTop="30dp"
+        android:text="@string/descricao"
+        android:fontFamily="casual"
+        android:textSize="16sp"
+        android:textStyle=""
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/textIntegrantesA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textDescricao"
+        android:layout_marginTop="25dp"
+        android:text="@string/integrantesA"
+        android:fontFamily="casual"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/textIntegrantesB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textIntegrantesA"
+        android:layout_marginTop="10dp"
+        android:text="@string/integrantesB"
+        android:fontFamily="casual"
+        android:textSize="14sp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/textContatoA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textIntegrantesB"
+        android:layout_marginTop="25dp"
+        android:text="@string/contatoA"
+        android:fontFamily="casual"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/textContatoB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textContatoA"
+        android:layout_marginTop="10dp"
+        android:text="@string/contatoB"
+        android:fontFamily="casual"
+        android:textSize="14sp"
+        android:gravity="center"/>
+
+    <!-- Botao Voltar -->
+    <include layout="@layout/btvoltar"/>
+
+</RelativeLayout>

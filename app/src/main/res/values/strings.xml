@@ -1,20 +1,24 @@
 <resources>
+
+    <!-- ****************** GERAL ****************** -->
     <!-- Titulo -->
     <string name="app_name">Keep Walking</string>
     <string name="app_subname">Caminhada</string>
-
-    <!-- Botoes da tela inicial -->
-    <string name="inic">Iniciar</string>
-    <string name="parar">Parar</string>
-    <string name="cont">Continuar</string>
-    <string name="zerar">Zerar</string>
 
     <!-- Lista do Menu Popup -->
     <string name="action_about">Sobre</string>
     <string name="action_help">Ajuda</string>
     <string name="action_contact">Contato</string>
+    <!-- ************************************ -->
 
-    <!-- Circulos da tela inicial -->
+    <!-- ****************** TELA INICIAL ****************** -->
+    <!-- Botoes -->
+    <string name="inic">Iniciar</string>
+    <string name="parar">Parar</string>
+    <string name="cont">Continuar</string>
+    <string name="zerar">Zerar</string>
+
+    <!-- Circulos -->
     <!-- text -->
     <string name="cPassos">Passos</string>
     <string name="cTempo">Tempo</string>
@@ -28,4 +32,29 @@
     <string name="kcal">kcal</string>
     <!-- value -->
     <string name="valueDefault">0</string>
+    <!-- ************************************ -->
+
+
+    <!-- ****************** TELA SOBRE ****************** -->
+    <!-- Botao -->
+    <string name="voltar">Voltar</string>
+
+    <!-- Texto -->
+    <string name="sobre">Sobre</string>
+    <string name="descricao">Descrição</string>
+    <string name="integrantesA">Integrantes</string>
+    <string name="integrantesB">Allisson Pierre \n
+    Allisson Lima \n
+    Caroline Carvalho \n
+    Paulo Tavares \n
+    Ramon Brito</string>
+    <string name="contatoA">Contato</string>
+    <string name="contatoB">info contato</string>
+    <!-- ************************************ -->
+
+
+    <!-- ****************** TELA AJUDA ****************** -->
+    <string name="ajuda">Ajuda</string>
+    <string name="infoAjuda">info</string>
+    <!-- ************************************ -->
 </resources>
