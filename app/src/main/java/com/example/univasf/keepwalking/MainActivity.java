@@ -8,13 +8,13 @@ import android.support.v7.widget.PopupMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-//import android.widget.Button;
+import android.widget.Button;
 import android.widget.TextView;
 
 // Testando Commit
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
-    // Muda a fonte
+    // Metodo para mudar a fonte
     private void mudarFonte(TextView tv, String fonte) {
         Typeface type = Typeface.createFromAsset(getAssets(), fonte);
         tv.setTypeface(type);
@@ -25,15 +25,18 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // altera fontes
+        /* altera fontes */
+        // Tittle
         TextView textKeepWalking = (TextView) findViewById(R.id.textKeepWalking);
         TextView textCaminhada = (TextView) findViewById(R.id.textCaminhada);
-        //Button btIniciar = (Button) findViewById(R.id.btIniciar);
-        //Button btZerar = (Button) findViewById(R.id.btZerar);
         mudarFonte(textKeepWalking, "fonts/stone.TTF");
         mudarFonte(textCaminhada, "fonts/stone.TTF");
-        //mudarFonte(btIniciar, "fonts/moonFlower.ttf");
-        //mudarFonte(btZerar, "fonts/moonFlower.ttf");
+
+        // Buttons
+        Button btIniciar = (Button) findViewById(R.id.btIniciar);
+        Button btZerar = (Button) findViewById(R.id.btZerar);
+        mudarFonte(btIniciar, "fonts/moonFlower.ttf");
+        mudarFonte(btZerar, "fonts/moonFlower.ttf");
     }
 
     // Menu Popup
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 return true;
             case R.id.action_help:
                 return true;
-            case R.id.action_contacts:
+            case R.id.action_contact:
                 return true;
             default:
                 return false;

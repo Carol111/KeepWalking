@@ -8,8 +8,16 @@
     android:orientation="horizontal"
     tools:context="com.example.univasf.keepwalking.MainActivity">
 
-        <!-- Texto Keep Walking -->
-        <TextView
+    <!-- Grade -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/grade">
+
+    </FrameLayout>
+
+    <!-- Texto Keep Walking -->
+    <TextView
             android:id="@+id/textKeepWalking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,7 +57,28 @@
         android:layout_height="100dip"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="90dp"
-        android:background="@drawable/circle" />
+        android:background="@drawable/circle">
+
+            <TextView
+                android:id="@+id/textPassos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="75dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="@string/cPassos" />
+
+            <TextView
+                android:id="@+id/valuePassos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="@string/valueDefault"
+                android:textColor="@color/colorAccent"
+                android:textSize="60sp" />
+
+        </FrameLayout>
 
         <!-- Grid para alinhar Tempo e Distancia -->
         <GridLayout
@@ -65,7 +94,37 @@
                 android:id="@+id/fLTempo"
                 android:layout_width="100dip"
                 android:layout_height="100dip"
-                android:background="@drawable/circle" />
+                android:background="@drawable/circle">
+
+                <TextView
+                    android:id="@+id/textTempo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="65dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="@string/cTempo" />
+
+                <TextView
+                    android:id="@+id/unitTempo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
+                    android:gravity="center"
+                    android:text="@string/min"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/valueTempo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/valueDefault"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="50sp" />
+
+            </FrameLayout>
 
             <!-- Distancia -->
             <FrameLayout
@@ -73,7 +132,37 @@
                 android:layout_width="100dip"
                 android:layout_height="100dip"
                 android:layout_marginLeft="50dp"
-                android:background="@drawable/circle" />
+                android:background="@drawable/circle">
+
+                <TextView
+                    android:id="@+id/textDistancia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="65dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="@string/cDistancia" />
+
+                <TextView
+                    android:id="@+id/unitDistancia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
+                    android:gravity="center"
+                    android:text="@string/m"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/valueDistancia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/valueDefault"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="50sp" />
+
+            </FrameLayout>
 
         </GridLayout>
 
@@ -91,15 +180,75 @@
                 android:id="@+id/fLVelocidade"
                 android:layout_width="100dip"
                 android:layout_height="100dip"
-                android:background="@drawable/circle" />
+                android:background="@drawable/circle">
+
+                <TextView
+                    android:id="@+id/textVelocidade"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="65dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="@string/cVelocidade" />
+
+                <TextView
+                    android:id="@+id/unitVelocidade"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
+                    android:gravity="center"
+                    android:text="@string/m_s"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/valueVelocidade"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/valueDefault"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="50sp" />
+
+            </FrameLayout>
 
         <!-- Kcal -->
             <FrameLayout
-                android:id="@+id/fLKcal"
+                android:id="@+id/fLCalorias"
                 android:layout_width="100dip"
                 android:layout_height="100dip"
                 android:layout_marginLeft="50dp"
-                android:background="@drawable/circle" />
+                android:background="@drawable/circle">
+
+                <TextView
+                    android:id="@+id/textCalorias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="65dp"
+                    android:gravity="center"
+                    android:text="@string/cCalorias"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/unitCalorias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
+                    android:gravity="center"
+                    android:text="@string/kcal"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/valueCalorias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/valueDefault"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="50sp" />
+
+            </FrameLayout>
 
         </GridLayout>
 
