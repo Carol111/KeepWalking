@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         mudarFonte(textCaminhada, "fonts/stone.TTF");
     }
 
-    //
+    // Menu Popup
     public void showPopup(View v){
         PopupMenu popup = new PopupMenu(this, v);
         MenuInflater inflater = popup.getMenuInflater();
