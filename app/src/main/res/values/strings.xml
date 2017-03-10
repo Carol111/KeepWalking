@@ -1,12 +1,31 @@
 <resources>
-    <!-- Lista do Menu Popup -->
+    <!-- Titulo -->
     <string name="app_name">Keep Walking</string>
     <string name="app_subname">Caminhada</string>
+
+    <!-- Botoes da tela inicial -->
     <string name="inic">Iniciar</string>
     <string name="parar">Parar</string>
     <string name="cont">Continuar</string>
     <string name="zerar">Zerar</string>
+
+    <!-- Lista do Menu Popup -->
     <string name="action_about">Sobre</string>
     <string name="action_help">Ajuda</string>
-    <string name="action_contacts">Contatos</string>
+    <string name="action_contact">Contato</string>
+
+    <!-- Circulos da tela inicial -->
+    <!-- text -->
+    <string name="cPassos">Passos</string>
+    <string name="cTempo">Tempo</string>
+    <string name="cDistancia">Distância</string>
+    <string name="cVelocidade">Velocidade</string>
+    <string name="cCalorias">Calorias</string>
+    <!-- unit -->
+    <string name="min">min</string>
+    <string name="m">m</string>
+    <string name="m_s">m/s</string>
+    <string name="kcal">kcal</string>
+    <!-- value -->
+    <string name="valueDefault">0</string>
 </resources>
