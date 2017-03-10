@@ -1,6 +1,11 @@
 <resources>
     <!-- Lista do Menu Popup -->
     <string name="app_name">Keep Walking</string>
+    <string name="app_subname">Caminhada</string>
+    <string name="inic">Iniciar</string>
+    <string name="parar">Parar</string>
+    <string name="cont">Continuar</string>
+    <string name="zerar">Zerar</string>
     <string name="action_about">Sobre</string>
     <string name="action_help">Ajuda</string>
     <string name="action_contacts">Contatos</string>

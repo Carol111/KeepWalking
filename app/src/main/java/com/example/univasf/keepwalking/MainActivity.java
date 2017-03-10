@@ -3,14 +3,12 @@ package com.example.univasf.keepwalking;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+//import android.widget.Button;
 import android.widget.TextView;
 
 // Testando Commit
@@ -27,11 +25,15 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // altera fonte do texto superior
+        // altera fontes
         TextView textKeepWalking = (TextView) findViewById(R.id.textKeepWalking);
         TextView textCaminhada = (TextView) findViewById(R.id.textCaminhada);
+        //Button btIniciar = (Button) findViewById(R.id.btIniciar);
+        //Button btZerar = (Button) findViewById(R.id.btZerar);
         mudarFonte(textKeepWalking, "fonts/stone.TTF");
         mudarFonte(textCaminhada, "fonts/stone.TTF");
+        //mudarFonte(btIniciar, "fonts/moonFlower.ttf");
+        //mudarFonte(btZerar, "fonts/moonFlower.ttf");
     }
 
     // Menu Popup
