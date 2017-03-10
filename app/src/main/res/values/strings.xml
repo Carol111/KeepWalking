@@ -1,7 +1,0 @@
-<resources>
-    <!-- Lista do Menu Popup -->
-    <string name="app_name"></string>
-    <string name="action_about">Sobre</string>
-    <string name="action_help">Ajuda</string>
-    <string name="action_contacts">Contatos</string>
-</resources>
