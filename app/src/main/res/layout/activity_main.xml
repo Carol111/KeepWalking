@@ -7,236 +7,238 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.univasf.keepwalking.MainActivity">
 
-   <include layout="@layout/header"/>
+   <include layout="@layout/header"
+       android:id="@+id/include"/>
 
-   <!-- Passos -->
-   <FrameLayout
-       android:id="@+id/fLPassos"
-       android:layout_width="100dip"
-       android:layout_height="100dip"
-       android:layout_centerHorizontal="true"
-       android:layout_marginTop="90dp"
-       android:background="@drawable/circle">
+    <!-- Passos -->
+    <FrameLayout
+        android:id="@+id/fLPassos"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/circle">
 
-      <TextView
-          android:id="@+id/textPassos"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="75dp"
-          android:gravity="center"
-          android:text="@string/cPassos" />
+        <TextView
+            android:id="@+id/textPassos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="75dp"
+            android:gravity="center"
+            android:text="@string/cPassos" />
 
-      <TextView
-          android:id="@+id/valuePassos"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="5dp"
-          android:gravity="center"
-          android:text="@string/valueDefault"
-          android:textColor="@color/colorAccent"
-          android:textSize="60sp" />
+        <TextView
+            android:id="@+id/valuePassos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="@string/valueDefault"
+            android:textColor="@color/colorAccent"
+            android:textSize="60sp" />
 
-   </FrameLayout>
+    </FrameLayout>
 
-   <!-- Grid para alinhar Tempo e Distancia -->
-   <GridLayout
-       android:id="@+id/grTD"
-       android:layout_width="250dp"
-       android:layout_height="100dp"
-       android:layout_below="@+id/fLPassos"
-       android:layout_centerHorizontal="true"
-       android:layout_marginTop="20dp">
+    <!-- Grid para alinhar Tempo e Distancia -->
+    <GridLayout
+        android:id="@+id/grTD"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/fLPassos"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
 
-      <!-- Tempo -->
-      <FrameLayout
-          android:id="@+id/fLTempo"
-          android:layout_width="100dip"
-          android:layout_height="100dip"
-          android:background="@drawable/circle">
+        <!-- Tempo -->
+        <FrameLayout
+            android:id="@+id/fLTempo"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:background="@drawable/circle">
 
-         <TextView
-             android:id="@+id/textTempo"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="65dp"
-             android:gravity="center"
-             android:text="@string/cTempo" />
+            <TextView
+                android:id="@+id/textTempo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="65dp"
+                android:gravity="center"
+                android:text="@string/cTempo" />
 
-         <TextView
-             android:id="@+id/unitTempo"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="80dp"
-             android:gravity="center"
-             android:text="@string/min"
-             android:textSize="12sp" />
+            <TextView
+                android:id="@+id/unitTempo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:gravity="center"
+                android:text="@string/min"
+                android:textSize="12sp" />
 
-         <TextView
-             android:id="@+id/valueTempo"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="10dp"
-             android:gravity="center"
-             android:text="@string/valueDefault"
-             android:textColor="@color/colorAccent"
-             android:textSize="50sp" />
+            <TextView
+                android:id="@+id/valueTempo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/valueDefault"
+                android:textColor="@color/colorAccent"
+                android:textSize="50sp" />
 
-      </FrameLayout>
+        </FrameLayout>
 
-      <!-- Distancia -->
-      <FrameLayout
-          android:id="@+id/fLDistancia"
-          android:layout_width="100dip"
-          android:layout_height="100dip"
-          android:layout_marginLeft="50dp"
-          android:background="@drawable/circle">
+        <!-- Distancia -->
+        <FrameLayout
+            android:id="@+id/fLDistancia"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/circle">
 
-         <TextView
-             android:id="@+id/textDistancia"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="65dp"
-             android:gravity="center"
-             android:text="@string/cDistancia" />
+            <TextView
+                android:id="@+id/textDistancia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="65dp"
+                android:gravity="center"
+                android:text="@string/cDistancia" />
 
-         <TextView
-             android:id="@+id/unitDistancia"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="80dp"
-             android:gravity="center"
-             android:text="@string/m"
-             android:textSize="12sp" />
+            <TextView
+                android:id="@+id/unitDistancia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:gravity="center"
+                android:text="@string/m"
+                android:textSize="12sp" />
 
-         <TextView
-             android:id="@+id/valueDistancia"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="10dp"
-             android:gravity="center"
-             android:text="@string/valueDefault"
-             android:textColor="@color/colorAccent"
-             android:textSize="50sp" />
+            <TextView
+                android:id="@+id/valueDistancia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/valueDefault"
+                android:textColor="@color/colorAccent"
+                android:textSize="50sp" />
 
-      </FrameLayout>
+        </FrameLayout>
 
-   </GridLayout>
+    </GridLayout>
 
-   <!-- Grid para alinhar Velocidade e Kcal -->
-   <GridLayout
-       android:id="@+id/grVK"
-       android:layout_width="250dp"
-       android:layout_height="100dp"
-       android:layout_below="@+id/grTD"
-       android:layout_centerHorizontal="true"
-       android:layout_marginTop="20dp">
+    <!-- Grid para alinhar Velocidade e Kcal -->
+    <GridLayout
+        android:id="@+id/grVK"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/grTD"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
 
-      <!-- Velocidade -->
-      <FrameLayout
-          android:id="@+id/fLVelocidade"
-          android:layout_width="100dip"
-          android:layout_height="100dip"
-          android:background="@drawable/circle">
+        <!-- Velocidade -->
+        <FrameLayout
+            android:id="@+id/fLVelocidade"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:background="@drawable/circle">
 
-         <TextView
-             android:id="@+id/textVelocidade"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="65dp"
-             android:gravity="center"
-             android:text="@string/cVelocidade" />
+            <TextView
+                android:id="@+id/textVelocidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="65dp"
+                android:gravity="center"
+                android:text="@string/cVelocidade" />
 
-         <TextView
-             android:id="@+id/unitVelocidade"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="80dp"
-             android:gravity="center"
-             android:text="@string/m_s"
-             android:textSize="12sp" />
+            <TextView
+                android:id="@+id/unitVelocidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:gravity="center"
+                android:text="@string/m_s"
+                android:textSize="12sp" />
 
-         <TextView
-             android:id="@+id/valueVelocidade"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="10dp"
-             android:gravity="center"
-             android:text="@string/valueDefault"
-             android:textColor="@color/colorAccent"
-             android:textSize="50sp" />
+            <TextView
+                android:id="@+id/valueVelocidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/valueDefault"
+                android:textColor="@color/colorAccent"
+                android:textSize="50sp" />
 
-      </FrameLayout>
+        </FrameLayout>
 
-      <!-- Kcal -->
-      <FrameLayout
-          android:id="@+id/fLCalorias"
-          android:layout_width="100dip"
-          android:layout_height="100dip"
-          android:layout_marginLeft="50dp"
-          android:background="@drawable/circle">
+        <!-- Kcal -->
+        <FrameLayout
+            android:id="@+id/fLCalorias"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/circle">
 
-         <TextView
-             android:id="@+id/textCalorias"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="65dp"
-             android:gravity="center"
-             android:text="@string/cCalorias"/>
+            <TextView
+                android:id="@+id/textCalorias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="65dp"
+                android:gravity="center"
+                android:text="@string/cCalorias"/>
 
-         <TextView
-             android:id="@+id/unitCalorias"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="80dp"
-             android:gravity="center"
-             android:text="@string/kcal"
-             android:textSize="12sp" />
+            <TextView
+                android:id="@+id/unitCalorias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:gravity="center"
+                android:text="@string/kcal"
+                android:textSize="12sp" />
 
-         <TextView
-             android:id="@+id/valueCalorias"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="10dp"
-             android:gravity="center"
-             android:text="@string/valueDefault"
-             android:textColor="@color/colorAccent"
-             android:textSize="50sp" />
+            <TextView
+                android:id="@+id/valueCalorias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/valueDefault"
+                android:textColor="@color/colorAccent"
+                android:textSize="50sp" />
 
-      </FrameLayout>
+        </FrameLayout>
 
-   </GridLayout>
+    </GridLayout>
 
-   <!-- Grid para alinhar os Botoes Iniciar/Parar e Zerar -->
-   <GridLayout
-       android:id="@+id/grBt"
-       android:layout_width="250dp"
-       android:layout_height="40dp"
-       android:layout_below="@+id/grVK"
-       android:layout_centerHorizontal="true"
-       android:layout_marginTop="40dp">
+    <!-- Grid para alinhar os Botoes Iniciar/Parar e Zerar -->
+    <GridLayout
+        android:id="@+id/grBt"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/grVK"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp">
 
-      <!-- Botao Inciar -->
-      <Button
-          android:id="@+id/btIniciar"
-          android:layout_width="100dp"
-          android:layout_height="40dp"
-          android:background="@drawable/rectangle_light"
-          android:text="@string/inic"
-          android:textColor="#FF525252"
-          android:textSize="18sp"
-          android:textStyle="bold" />
+        <!-- Botao Inciar -->
+        <Button
+            android:id="@+id/btIniciar"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@drawable/rectangle_light"
+            android:text="@string/inic"
+            android:textColor="#FF525252"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-      <!-- Botao Zerar -->
-      <Button
-          android:id="@+id/btZerar"
-          android:layout_width="100dp"
-          android:layout_height="40dp"
-          android:layout_marginLeft="50dp"
-          android:background="@drawable/rectangle_dark"
-          android:text="@string/zerar"
-          android:textColor="#DDDDDD"
-          android:textSize="18sp"
-          android:textStyle="bold" />
+        <!-- Botao Zerar -->
+        <Button
+            android:id="@+id/btZerar"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/rectangle_dark"
+            android:text="@string/zerar"
+            android:textColor="#DDDDDD"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-   </GridLayout>
+    </GridLayout>
+
 </RelativeLayout>
