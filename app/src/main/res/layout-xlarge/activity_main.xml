@@ -230,7 +230,8 @@
             android:text="@string/inic"
             android:textSize="35sp"
             android:textStyle="bold"
-            android:textColor="#FF525252"/>
+            android:textColor="#FF525252"
+            android:onClick="clickIniciar"/>
 
         <!-- Botao Zerar -->
         <Button
@@ -242,7 +243,8 @@
             android:text="@string/zerar"
             android:textSize="35sp"
             android:textStyle="bold"
-            android:textColor="#DDDDDD"/>
+            android:textColor="#DDDDDD"
+            android:onClick="clickZerar"/>
 
     </GridLayout>
 

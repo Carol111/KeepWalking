@@ -56,5 +56,8 @@
     <!-- ****************** TELA AJUDA ****************** -->
     <string name="ajuda">Ajuda</string>
     <string name="infoAjuda">info</string>
+    <string name="btParar">Parar</string>
+    <string name="btContinuar">Continuar</string>
+    <string name="btIniciar">Iniciar</string>
     <!-- ************************************ -->
 </resources>

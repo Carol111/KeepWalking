@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
+import android.view.View.OnClickListener;
 import android.view.MenuItem;
 import android.view.View;
 import android.graphics.Typeface;
@@ -11,6 +12,20 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity{
+
+    TextView textKeepWalking;
+    TextView textCaminhada;
+
+    TextView textPassos;
+    TextView textTempo;
+    TextView textDistancia;
+    TextView textVelocidade;
+    TextView textCalorias;
+
+    Button btIniciar;
+    Button btZerar;
+
+    char btFlag;
 
     // Metodo para mudar a fonte
     private void changeFont(TextView tv, String fonte) {
@@ -23,19 +38,21 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        btFlag = 'I';
+
         /* altera fontes */
         // Tittle
-        TextView textKeepWalking = (TextView) findViewById(R.id.textKeepWalking);
-        TextView textCaminhada = (TextView) findViewById(R.id.textCaminhada);
+        textKeepWalking = (TextView) findViewById(R.id.textKeepWalking);
+        textCaminhada = (TextView) findViewById(R.id.textCaminhada);
         changeFont(textKeepWalking, "fonts/stone.TTF");
         changeFont(textCaminhada, "fonts/stone.TTF");
 
         // Circle Texts
-        TextView textPassos = (TextView) findViewById(R.id.textPassos);
-        TextView textTempo = (TextView) findViewById(R.id.textTempo);
-        TextView textDistancia = (TextView) findViewById(R.id.textDistancia);
-        TextView textVelocidade = (TextView) findViewById(R.id.textVelocidade);
-        TextView textCalorias = (TextView) findViewById(R.id.textCalorias);
+        textPassos = (TextView) findViewById(R.id.textPassos);
+        textTempo = (TextView) findViewById(R.id.textTempo);
+        textDistancia = (TextView) findViewById(R.id.textDistancia);
+        textVelocidade = (TextView) findViewById(R.id.textVelocidade);
+        textCalorias = (TextView) findViewById(R.id.textCalorias);
         changeFont(textPassos, "fonts/stone.TTF");
         changeFont(textTempo, "fonts/stone.TTF");
         changeFont(textDistancia, "fonts/stone.TTF");
@@ -43,8 +60,8 @@ public class MainActivity extends AppCompatActivity{
         changeFont(textCalorias, "fonts/stone.TTF");
 
         // Buttons
-        Button btIniciar = (Button) findViewById(R.id.btIniciar);
-        Button btZerar = (Button) findViewById(R.id.btZerar);
+        btIniciar = (Button) findViewById(R.id.btIniciar);
+        btZerar = (Button) findViewById(R.id.btZerar);
         changeFont(btIniciar, "fonts/annabelle.ttf");
         changeFont(btZerar, "fonts/annabelle.ttf");
 
@@ -79,5 +96,37 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
+    public void clickIniciar(View v){
+        switch (btFlag){
+            case 'I':
+            case 'C':{
+                btFlag = 'P';
+                btIniciar.setText(R.string.btParar);
 
+                //Chamar funcoes
+
+                //funcPassos();
+                //funcTempo();
+                //funcDistancia();
+                //funcVelocidade();
+                //funcCalorias();
+                return;
+            }
+            case 'P':{
+                btFlag = 'C';
+                btIniciar.setText(R.string.btContinuar);
+                return;
+            }
+            default:
+                return;
+        }
+    }
+
+    public void clickZerar(View v){
+        if(btFlag == 'C'){
+            btFlag = 'I';
+            btIniciar.setText(R.string.btIniciar);
+            return;
+        }
+    }
 }

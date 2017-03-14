@@ -23,10 +23,11 @@
         android:id="@+id/textDescricao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_below="@+id/textSobre"
         android:layout_marginTop="60dp"
         android:text="@string/descricao"
-        android:fontFamily="casual"
         android:textSize="30sp"
         android:textStyle=""
         android:gravity="center"/>
@@ -38,7 +39,6 @@
         android:layout_below="@+id/textDescricao"
         android:layout_marginTop="50dp"
         android:text="@string/integrantesA"
-        android:fontFamily="casual"
         android:textSize="35sp"
         android:textStyle="bold"
         android:gravity="center"/>
@@ -50,7 +50,6 @@
         android:layout_below="@+id/textIntegrantesA"
         android:layout_marginTop="10dp"
         android:text="@string/integrantesB"
-        android:fontFamily="casual"
         android:textSize="30sp"
         android:gravity="center"/>
 
@@ -61,7 +60,6 @@
         android:layout_below="@+id/textIntegrantesB"
         android:layout_marginTop="50dp"
         android:text="@string/contatoA"
-        android:fontFamily="casual"
         android:textSize="35sp"
         android:textStyle="bold"
         android:gravity="center"/>
@@ -73,7 +71,6 @@
         android:layout_below="@+id/textContatoA"
         android:layout_marginTop="20dp"
         android:text="@string/contatoB"
-        android:fontFamily="casual"
         android:textSize="30sp"
         android:gravity="center"/>
 
