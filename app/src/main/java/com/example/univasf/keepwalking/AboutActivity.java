@@ -69,8 +69,10 @@ public class AboutActivity extends AppCompatActivity {
                         Intent help = new Intent(AboutActivity.this, HelpActivity.class);
                         startActivity(help);
                         return true;}
-                    case R.id.action_history:
-                        return true;
+                    case R.id.action_history:{
+                        Intent history = new Intent(AboutActivity.this, HistoryActivity.class);
+                        startActivity(history);
+                        return true;}
                     default:
                         return false;
                 }

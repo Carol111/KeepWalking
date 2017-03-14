@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.univasf.keepwalking.MainActivity">
+
+    <include layout="@layout/header"
+        android:id="@+id/includeHeaderHelp" />
+
+    <!-- Botao Voltar -->
+    <include layout="@layout/btvoltar"
+        android:id="@+id/includeBtVoltarHistory" />
+
+    <TextView
+        android:id="@+id/textHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:gravity="center"
+        android:text="@string/history"
+        android:textSize="40sp" />
+
+    <ListView
+        android:id="@+id/listCaminhada"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:layout_below="@id/textHistory"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rectangle_light"
+        android:divider="#FF525252"
+        android:dividerHeight="1dp"
+        android:verticalScrollbarPosition="right" />
+
+    <!-- Grid para alinhar os Botoes Total e Limpar -->
+    <GridLayout
+        android:id="@+id/grHBt"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="88dp">
+
+        <!-- Botao Total -->
+        <Button
+            android:id="@+id/btTotal"
+            android:layout_width="85dp"
+            android:layout_height="40dp"
+            android:background="@drawable/rectangle_light"
+            android:text="@string/btTotal"
+            android:textColor="#FF525252"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <!-- Botao Limpar -->
+        <Button
+            android:id="@+id/btLimpar"
+            android:layout_width="85dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/rectangle_dark"
+            android:text="@string/btLimpar"
+            android:textColor="#DDDDDD"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+    </GridLayout>
+
+</RelativeLayout>

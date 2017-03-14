@@ -10,7 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class HelpActivity extends AppCompatActivity {
+public class HistoryActivity extends AppCompatActivity {
+
+    Button btTotal;
+    Button btLimpar;
 
     // Metodo para mudar a fonte
     private void changeFont(TextView tv, String fonte) {
@@ -21,7 +24,11 @@ public class HelpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_help);
+        setContentView(R.layout.activity_history);
+
+        /* altera fontes */
+        TextView textHistory = (TextView) findViewById(R.id.textHistory);
+        changeFont(textHistory, "fonts/stone.TTF");
 
         // Tittle
         TextView textKeepWalking = (TextView) findViewById(R.id.textKeepWalking);
@@ -29,19 +36,19 @@ public class HelpActivity extends AppCompatActivity {
         changeFont(textKeepWalking, "fonts/stone.TTF");
         changeFont(textCaminhada, "fonts/stone.TTF");
 
-        /* altera fontes */
-        TextView textAjuda = (TextView) findViewById(R.id.textAjuda);
-        changeFont(textAjuda, "fonts/stone.TTF");
-
         // Buttons
         Button btVoltar = (Button) findViewById(R.id.btVoltar);
+        btTotal = (Button) findViewById(R.id.btTotal);
+        btLimpar = (Button) findViewById(R.id.btLimpar);
         changeFont(btVoltar, "fonts/annabelle.ttf");
+        changeFont(btTotal, "fonts/annabelle.ttf");
+        changeFont(btLimpar, "fonts/annabelle.ttf");
 
         // Volta para a MainActivity
         btVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent main = new Intent(HelpActivity.this, MainActivity.class);
+                Intent main = new Intent(HistoryActivity.this, MainActivity.class);
                 startActivity(main);
             }
         });
@@ -60,15 +67,15 @@ public class HelpActivity extends AppCompatActivity {
             public boolean onMenuItemClick (MenuItem item){
                 switch (item.getItemId()){
                     case R.id.action_about:{
-                        Intent about = new Intent(HelpActivity.this, AboutActivity.class);
+                        Intent about = new Intent(HistoryActivity.this, AboutActivity.class);
                         startActivity(about);
                         return true;}
-                    case R.id.action_help:
-                        return true;
-                    case R.id.action_history:{
-                        Intent history = new Intent(HelpActivity.this, HistoryActivity.class);
-                        startActivity(history);
+                    case R.id.action_help:{
+                        Intent help = new Intent(HistoryActivity.this, HelpActivity.class);
+                        startActivity(help);
                         return true;}
+                    case R.id.action_history:
+                        return true;
                     default:
                         return false;
                 }

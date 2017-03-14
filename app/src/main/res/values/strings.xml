@@ -8,7 +8,7 @@
     <!-- Lista do Menu Popup -->
     <string name="action_about">Sobre</string>
     <string name="action_help">Ajuda</string>
-    <string name="action_contact">Histórico</string>
+    <string name="action_history">Histórico</string>
     <!-- ************************************ -->
 
     <!-- ****************** TELA INICIAL ****************** -->
@@ -59,5 +59,12 @@
     <string name="btParar">Parar</string>
     <string name="btContinuar">Continuar</string>
     <string name="btIniciar">Iniciar</string>
+    <!-- ************************************ -->
+
+
+    <!-- ****************** TELA HISTORICO ****************** -->
+    <string name="history">Histórico</string>
+    <string name="btTotal">Total</string>
+    <string name="btLimpar">Limpar</string>
     <!-- ************************************ -->
 </resources>

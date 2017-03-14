@@ -86,8 +86,10 @@ public class MainActivity extends AppCompatActivity{
                         Intent help = new Intent(MainActivity.this, HelpActivity.class);
                         startActivity(help);
                         return true;}
-                    case R.id.action_history:
-                        return true;
+                    case R.id.action_history:{
+                        Intent history = new Intent(MainActivity.this, HistoryActivity.class);
+                        startActivity(history);
+                        return true;}
                     default:
                         return false;
                 }
@@ -126,7 +128,6 @@ public class MainActivity extends AppCompatActivity{
         if(btFlag == 'C'){
             btFlag = 'I';
             btIniciar.setText(R.string.btIniciar);
-            return;
         }
     }
 }
