@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/colormain"
+    android:fitsSystemWindows="true"
+    android:orientation="horizontal">
+
+    <!-- Grade -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/grade">
+
+    </FrameLayout>
+
+    <!-- Texto Keep Walking -->
+    <TextView
+            android:id="@+id/textKeepWalking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/app_name"
+            android:textSize="35sp"
+            android:gravity="center"/>
+
+        <!-- Texto Caminhada -->
+        <TextView
+            android:id="@+id/textCaminhada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_subname"
+            android:textSize="16sp"
+            android:layout_below="@+id/textKeepWalking"
+            android:layout_centerHorizontal="true" />
+
+        <!-- Menu Popup -->
+        <Button
+            android:id="@+id/menuPopup"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ic_more_vert_black"
+            android:onClick="showPopup"
+            android:layout_alignRight="@+id/textKeepWalking"/>
+
+</RelativeLayout>
