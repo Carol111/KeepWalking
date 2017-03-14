@@ -1,16 +1,16 @@
 package com.example.univasf.keepwalking;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.view.MenuItem;
 import android.view.View;
-import android.graphics.Typeface;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity{
+public class AboutActivity extends AppCompatActivity {
 
     // Metodo para mudar a fonte
     private void changeFont(TextView tv, String fonte) {
@@ -21,32 +21,34 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_about);
 
-        /* altera fontes */
         // Tittle
         TextView textKeepWalking = (TextView) findViewById(R.id.textKeepWalking);
         TextView textCaminhada = (TextView) findViewById(R.id.textCaminhada);
         changeFont(textKeepWalking, "fonts/stone.TTF");
         changeFont(textCaminhada, "fonts/stone.TTF");
 
-        // Circle Texts
-        TextView textPassos = (TextView) findViewById(R.id.textPassos);
-        TextView textTempo = (TextView) findViewById(R.id.textTempo);
-        TextView textDistancia = (TextView) findViewById(R.id.textDistancia);
-        TextView textVelocidade = (TextView) findViewById(R.id.textVelocidade);
-        TextView textCalorias = (TextView) findViewById(R.id.textCalorias);
-        changeFont(textPassos, "fonts/stone.TTF");
-        changeFont(textTempo, "fonts/stone.TTF");
-        changeFont(textDistancia, "fonts/stone.TTF");
-        changeFont(textVelocidade, "fonts/stone.TTF");
-        changeFont(textCalorias, "fonts/stone.TTF");
+        /* altera fontes */
+        TextView textSobre = (TextView) findViewById(R.id.textSobre);
+        changeFont(textSobre, "fonts/stone.TTF");
+        TextView textIntegrantesA = (TextView) findViewById(R.id.textIntegrantesA);
+        changeFont(textIntegrantesA, "fonts/stone.TTF");
+        TextView textContatoA = (TextView) findViewById(R.id.textContatoA);
+        changeFont(textContatoA, "fonts/stone.TTF");
 
         // Buttons
-        Button btIniciar = (Button) findViewById(R.id.btIniciar);
-        Button btZerar = (Button) findViewById(R.id.btZerar);
-        changeFont(btIniciar, "fonts/annabelle.ttf");
-        changeFont(btZerar, "fonts/annabelle.ttf");
+        Button btVoltar = (Button) findViewById(R.id.btVoltar);
+        changeFont(btVoltar, "fonts/annabelle.ttf");
+
+        // Volta para a MainActivity
+        btVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent main = new Intent(AboutActivity.this, MainActivity.class);
+                startActivity(main);
+            }
+        });
 
     }
 
@@ -61,12 +63,10 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public boolean onMenuItemClick (MenuItem item){
                 switch (item.getItemId()){
-                    case R.id.action_about:{
-                        Intent about = new Intent(MainActivity.this, AboutActivity.class);
-                        startActivity(about);
-                        return true;}
+                    case R.id.action_about:
+                        return true;
                     case R.id.action_help:{
-                        Intent help = new Intent(MainActivity.this, HelpActivity.class);
+                        Intent help = new Intent(AboutActivity.this, HelpActivity.class);
                         startActivity(help);
                         return true;}
                     case R.id.action_history:
@@ -78,6 +78,5 @@ public class MainActivity extends AppCompatActivity{
 
         });
     }
-
 
 }

@@ -8,7 +8,7 @@
     <!-- Lista do Menu Popup -->
     <string name="action_about">Sobre</string>
     <string name="action_help">Ajuda</string>
-    <string name="action_contact">Contato</string>
+    <string name="action_contact">Histórico</string>
     <!-- ************************************ -->
 
     <!-- ****************** TELA INICIAL ****************** -->
