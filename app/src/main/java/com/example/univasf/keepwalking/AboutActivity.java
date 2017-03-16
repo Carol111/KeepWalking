@@ -47,6 +47,7 @@ public class AboutActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent main = new Intent(AboutActivity.this, MainActivity.class);
                 startActivity(main);
+                finish();
             }
         });
 
@@ -68,10 +69,12 @@ public class AboutActivity extends AppCompatActivity {
                     case R.id.action_help:{
                         Intent help = new Intent(AboutActivity.this, HelpActivity.class);
                         startActivity(help);
+                        finish();
                         return true;}
                     case R.id.action_history:{
                         Intent history = new Intent(AboutActivity.this, HistoryActivity.class);
                         startActivity(history);
+                        finish();
                         return true;}
                     default:
                         return false;

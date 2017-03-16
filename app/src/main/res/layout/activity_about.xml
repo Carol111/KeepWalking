@@ -10,6 +10,10 @@
     <include layout="@layout/header"
         android:id="@+id/includeHeaderAbout" />
 
+    <!-- Botao Voltar -->
+    <include layout="@layout/btvoltar"
+        android:id="@+id/includeBtVoltarAbout" />
+
     <TextView
         android:id="@+id/textSobre"
         android:layout_width="match_parent"
@@ -39,7 +43,7 @@
         android:layout_below="@+id/textDescricao"
         android:layout_marginTop="20dp"
         android:text="@string/integrantesA"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:gravity="center"/>
 
@@ -50,7 +54,7 @@
         android:layout_below="@+id/textIntegrantesA"
         android:layout_marginTop="10dp"
         android:text="@string/integrantesB"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:gravity="center"/>
 
     <TextView
@@ -60,7 +64,7 @@
         android:layout_below="@+id/textIntegrantesB"
         android:layout_marginTop="20dp"
         android:text="@string/contatoA"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:gravity="center"/>
 
@@ -71,11 +75,7 @@
         android:layout_below="@+id/textContatoA"
         android:layout_marginTop="10dp"
         android:text="@string/contatoB"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:gravity="center"/>
-
-    <!-- Botao Voltar -->
-    <include layout="@layout/btvoltar"
-        android:id="@+id/includeBtVoltarAbout" />
 
 </RelativeLayout>

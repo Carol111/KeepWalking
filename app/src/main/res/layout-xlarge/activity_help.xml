@@ -28,7 +28,6 @@
         android:layout_below="@+id/textAjuda"
         android:layout_marginTop="60dp"
         android:text="@string/infoAjuda"
-        android:fontFamily="casual"
         android:textSize="35sp"
         android:textStyle=""
         android:gravity="center"/>

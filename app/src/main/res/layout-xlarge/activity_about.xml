@@ -10,6 +10,10 @@
     <include layout="@layout/header"
         android:id="@+id/includeHeaderAbout" />
 
+    <!-- Botao Voltar -->
+    <include layout="@layout/btvoltar"
+        android:id="@+id/includeBtVoltarAbout" />
+
     <TextView
         android:id="@+id/textSobre"
         android:layout_width="match_parent"
@@ -73,9 +77,5 @@
         android:text="@string/contatoB"
         android:textSize="30sp"
         android:gravity="center"/>
-
-    <!-- Botao Voltar -->
-    <include layout="@layout/btvoltar"
-        android:id="@+id/includeBtVoltarAbout" />
 
 </RelativeLayout>

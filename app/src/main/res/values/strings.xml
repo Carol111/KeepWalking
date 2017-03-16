@@ -14,7 +14,7 @@
     <!-- ****************** TELA INICIAL ****************** -->
     <!-- Botoes -->
     <string name="inic">Iniciar</string>
-    <string name="parar">Parar</string>
+    <string name="pausar">Pausar</string>
     <string name="cont">Continuar</string>
     <string name="zerar">Zerar</string>
 
@@ -49,16 +49,18 @@
     Paulo Tavares \n
     Ramon Brito</string>
     <string name="contatoA">Contato</string>
-    <string name="contatoB">info contato</string>
+    <string name="contatoB">keepwalking.caminhada@gmail.com</string>
     <!-- ************************************ -->
 
 
     <!-- ****************** TELA AJUDA ****************** -->
     <string name="ajuda">Ajuda</string>
-    <string name="infoAjuda">info</string>
-    <string name="btParar">Parar</string>
-    <string name="btContinuar">Continuar</string>
-    <string name="btIniciar">Iniciar</string>
+    <string name="infoAjuda">Clique no botão INICIAR ao começar sua caminhada,
+        certifique-se de clicar em PAUSAR ao parar sua caminhada, depois da pausa,
+        clique em CONTINUAR para continuar caso continue a caminhada. Para apagar os
+        valores, clique em ZERAR, assim pode começar uma nova caminhada com novos dados. \n\n
+        Na opção HISTÓRICO é possível ver o resumo dos dados da caminhada a cada dia
+        e o total geral. Clique em LIMPAR para zerar o histórico.</string>
     <!-- ************************************ -->
 
 

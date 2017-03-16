@@ -81,14 +81,17 @@ public class MainActivity extends AppCompatActivity{
                     case R.id.action_about:{
                         Intent about = new Intent(MainActivity.this, AboutActivity.class);
                         startActivity(about);
+                        finish();
                         return true;}
                     case R.id.action_help:{
                         Intent help = new Intent(MainActivity.this, HelpActivity.class);
                         startActivity(help);
+                        finish();
                         return true;}
                     case R.id.action_history:{
                         Intent history = new Intent(MainActivity.this, HistoryActivity.class);
                         startActivity(history);
+                        finish();
                         return true;}
                     default:
                         return false;
@@ -103,7 +106,7 @@ public class MainActivity extends AppCompatActivity{
             case 'I':
             case 'C':{
                 btFlag = 'P';
-                btIniciar.setText(R.string.btParar);
+                btIniciar.setText(R.string.pausar);
 
                 //Chamar funcoes
 
@@ -116,7 +119,7 @@ public class MainActivity extends AppCompatActivity{
             }
             case 'P':{
                 btFlag = 'C';
-                btIniciar.setText(R.string.btContinuar);
+                btIniciar.setText(R.string.cont);
                 return;
             }
             default:
@@ -125,9 +128,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void clickZerar(View v){
-        if(btFlag == 'C'){
-            btFlag = 'I';
-            btIniciar.setText(R.string.btIniciar);
-        }
+        btFlag = 'I';
+        btIniciar.setText(R.string.inic);
     }
 }
