@@ -26,7 +26,7 @@
     <string name="cVelocidade">Velocidade</string>
     <string name="cCalorias">Calorias</string>
     <!-- unit -->
-    <string name="min">min</string>
+    <string name="min">h:m:s</string>
     <string name="m">m</string>
     <string name="m_s">m/s</string>
     <string name="kcal">kcal</string>
