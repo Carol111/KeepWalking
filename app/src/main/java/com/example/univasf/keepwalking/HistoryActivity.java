@@ -3,17 +3,28 @@ package com.example.univasf.keepwalking;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.Iterator;
+import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity {
 
     Button btTotal;
     Button btLimpar;
+
+    DbHelper dbHelper;
+    List<Caminhada> listaCaminhada;
+
+    private ListView listCaminhada;
 
     // Metodo para mudar a fonte
     private void changeFont(TextView tv, String fonte) {
@@ -54,6 +65,17 @@ public class HistoryActivity extends AppCompatActivity {
             }
         });
 
+        //TESTE DB
+
+        dbHelper = new DbHelper(this);
+
+        listCaminhada = (ListView) findViewById(R.id.listCaminhada);
+        listaCaminhada = dbHelper.selectTodasAsCaminhadas();
+
+        ArrayAdapter<Caminhada> adp = new ArrayAdapter<Caminhada>(this, android.R.layout.simple_list_item_1, listaCaminhada);
+
+        listCaminhada.setAdapter(adp);
+
     }
 
     // Menu Popup
@@ -85,6 +107,46 @@ public class HistoryActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    public void limparDb(View v){
+        dbHelper.limpar();
+        listaCaminhada = dbHelper.selectTodasAsCaminhadas();
+
+        ArrayAdapter<Caminhada> adp = new ArrayAdapter<Caminhada>(this, android.R.layout.simple_list_item_1, listaCaminhada);
+
+        listCaminhada.setAdapter(adp);
+    }
+
+    public void totalDb(View v){
+
+        int passos = 0;
+        //inserir tempo
+        int distancia = 0;
+        int velocidade = 0;
+        int calorias = 0;
+        int n = 0;
+
+        for (Iterator iterator = listaCaminhada.iterator(); iterator.hasNext();) {
+            Caminhada caminhada = (Caminhada) iterator.next();
+
+            passos = passos + caminhada.getPassos();
+            //inserir tempo
+            distancia = distancia + caminhada.getDistancia();
+            velocidade = velocidade + caminhada.getVelocidade();
+            calorias = calorias + caminhada.getCalorias();
+            n++;
+        }
+        velocidade = velocidade / n;
+
+        // Caixa de diálogo
+        AlertDialog.Builder builder = new AlertDialog.Builder(HistoryActivity.this, R.style.Theme_AppCompat_Dialog_Alert);
+
+        //inserir tempo
+        builder.setMessage("Passos: " + passos + "\nDistância: " + distancia + " m \nVelocidade média: " + velocidade + "m/s \nCalorias: " + calorias + " kcal");
+        builder.setTitle("Total");
+        builder.setPositiveButton("OK", null);
+        builder.show();
     }
 
 }

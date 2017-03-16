@@ -18,7 +18,7 @@
         android:background="@drawable/rectangle_light"
         android:text="@string/voltar"
         android:textColor="#FF525252"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

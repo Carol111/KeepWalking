@@ -52,7 +52,8 @@
             android:text="@string/btTotal"
             android:textColor="#FF525252"
             android:textSize="35sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:onClick="totalDb"/>
 
         <!-- Botao Limpar -->
         <Button
@@ -64,7 +65,8 @@
             android:text="@string/btLimpar"
             android:textColor="#DDDDDD"
             android:textSize="35sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:onClick="limparDb"/>
 
     </GridLayout>
 

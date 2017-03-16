@@ -224,7 +224,7 @@
             android:background="@drawable/rectangle_light"
             android:text="@string/inic"
             android:textColor="#FF525252"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:onClick="clickIniciar"/>
 
@@ -237,7 +237,7 @@
             android:background="@drawable/rectangle_dark"
             android:text="@string/zerar"
             android:textColor="#DDDDDD"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:onClick="clickZerar"/>
 
