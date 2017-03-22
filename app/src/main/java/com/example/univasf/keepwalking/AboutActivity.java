@@ -45,8 +45,6 @@ public class AboutActivity extends AppCompatActivity {
         btVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent main = new Intent(AboutActivity.this, MainActivity.class);
-                startActivity(main);
                 finish();
             }
         });

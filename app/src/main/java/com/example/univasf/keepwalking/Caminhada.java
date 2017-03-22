@@ -1,5 +1,8 @@
 package com.example.univasf.keepwalking;
 
+import android.os.SystemClock;
+import android.widget.Chronometer;
+
 public class Caminhada {
     private String data;
     private int passos;
@@ -7,12 +10,23 @@ public class Caminhada {
     private int velocidade;
     private int calorias;
 
-    public Caminhada(){}
+    private Chronometer ch;
+    private long milliseconds;
+    private long bMilliseconds;
 
-    public Caminhada(String data, int passos, int distancia, int velocidade, int calorias){
+    static final int hora = 3600000;
+    static final int min = 60000;
+    static final int sec = 1000;
+
+    public Caminhada(){
+        milliseconds=0;
+        bMilliseconds=0;
+    }
+
+    public Caminhada(String data, int passos, long tempo, int distancia, int velocidade, int calorias){
         this.data = data;
         this.passos = passos;
-        //inserir tempo
+        this.bMilliseconds = tempo;
         this.distancia = distancia;
         this.velocidade = velocidade;
         this.calorias = calorias;
@@ -35,7 +49,16 @@ public class Caminhada {
         this.passos = passos;
     }
 
-    //inserir tempo
+    public void setCh(Chronometer ch) {
+        this.ch = ch;
+    }
+
+    public void setbMilliseconds(long bMilliseconds){
+        this.bMilliseconds = bMilliseconds;
+    }
+    public long getbMilliseconds(){
+        return bMilliseconds;
+    }
 
     public int getDistancia() {
         return distancia;
@@ -61,18 +84,39 @@ public class Caminhada {
         this.calorias = calorias;
     }
 
-    public void add (int newPassos, int newDistancia, int newVelocidade, int newCalorias){
-        setPassos(getPassos() + newPassos);
-        //inserir tempo
-        setDistancia(getDistancia() + newDistancia);
-        setVelocidade((getVelocidade() + newVelocidade)/2);
-        setCalorias(getCalorias() + newCalorias);
+    public void startChronometer (){
+        ch.setBase(SystemClock.elapsedRealtime() - milliseconds);
+        ch.start();
+    }
+
+    public void pauseChronometer(){
+        milliseconds = SystemClock.elapsedRealtime() - ch.getBase();
+        ch.stop();
+    }
+
+    public void clearChronometer (char flag){
+
+        if(flag == 'C'){
+            bMilliseconds = milliseconds;
+        }else bMilliseconds = SystemClock.elapsedRealtime() - ch.getBase();
+
+        milliseconds = 0;
+        ch.setBase(SystemClock.elapsedRealtime());
+        ch.start();
+        ch.stop();
     }
 
     @Override
     public String toString() {
-        //inserir tempo
-        return data + "\n" + passos + " passos | " + distancia + " m | " + velocidade + " m/s | " + calorias + " kcal";
+        return data + "\n"
+                + passos + " passos | "
+                + bMilliseconds/hora + "h"
+                + (bMilliseconds%hora)/min + "m"
+                + ((bMilliseconds%hora)%min)/sec + "s" + " | "
+                + distancia + " m | "
+                + velocidade + " m/s | "
+                + calorias + " kcal";
     }
+
 
 }
