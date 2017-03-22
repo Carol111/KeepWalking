@@ -11,16 +11,22 @@ public class Caminhada {
     private int calorias;
 
     private Chronometer ch;
-    private long milliseconds=0;
+    private long milliseconds;
     private long bMilliseconds;
 
+    static final int hora = 3600000;
+    static final int min = 60000;
+    static final int sec = 1000;
+
     public Caminhada(){
+        milliseconds=0;
+        bMilliseconds=0;
     }
 
-    public Caminhada(String data, int passos, int distancia, int velocidade, int calorias){
+    public Caminhada(String data, int passos, long tempo, int distancia, int velocidade, int calorias){
         this.data = data;
         this.passos = passos;
-        //inserir tempo
+        this.bMilliseconds = tempo;
         this.distancia = distancia;
         this.velocidade = velocidade;
         this.calorias = calorias;
@@ -88,8 +94,12 @@ public class Caminhada {
         ch.stop();
     }
 
-    public void clearChronometer (){
-        bMilliseconds = SystemClock.elapsedRealtime() - ch.getBase();
+    public void clearChronometer (char flag){
+
+        if(flag == 'C'){
+            bMilliseconds = milliseconds;
+        }else bMilliseconds = SystemClock.elapsedRealtime() - ch.getBase();
+
         milliseconds = 0;
         ch.setBase(SystemClock.elapsedRealtime());
         ch.start();
@@ -98,8 +108,14 @@ public class Caminhada {
 
     @Override
     public String toString() {
-        //inserir tempo
-        return data + "\n" + passos + " passos | " + distancia + " m | " + velocidade + " m/s | " + calorias + " kcal";
+        return data + "\n"
+                + passos + " passos | "
+                + bMilliseconds/hora + "h"
+                + (bMilliseconds%hora)/min + "m"
+                + ((bMilliseconds%hora)%min)/sec + "s" + " | "
+                + distancia + " m | "
+                + velocidade + " m/s | "
+                + calorias + " kcal";
     }
 
 

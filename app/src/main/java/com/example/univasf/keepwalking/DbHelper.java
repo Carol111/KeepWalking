@@ -26,7 +26,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String sqlCreateTabelaCaminhada = "CREATE TABLE caminhada("
                 + "data TEXT PRIMARY KEY,"
                 + "passos INTEGER,"
-                //inserir tempo
+                + "tempo REAL,"
                 + "distancia INTEGER,"
                 + "velocidade INTEGER,"
                 + "calorias INTEGER"
@@ -60,12 +60,18 @@ public class DbHelper extends SQLiteOpenHelper {
 
        if(c.moveToFirst()){
             Log.i("Test Banco", "data encontrada");
+            cv.put("data", caminhada.getData());
+            cv.put("passos", caminhada.getPassos());
+            cv.put("tempo", caminhada.getbMilliseconds());
+            cv.put("distancia", caminhada.getDistancia());
+            cv.put("velocidade", caminhada.getVelocidade());
+            cv.put("calorias", caminhada.getCalorias());
 
         }else {
             Log.i("Test Banco", "data NAO encontrada");
             cv.put("data", caminhada.getData());
             cv.put("passos", caminhada.getPassos());
-            //inserir tempo
+            cv.put("tempo", caminhada.getbMilliseconds());
             cv.put("distancia", caminhada.getDistancia());
             cv.put("velocidade", caminhada.getVelocidade());
             cv.put("calorias", caminhada.getCalorias());
@@ -90,11 +96,11 @@ public class DbHelper extends SQLiteOpenHelper {
             do{
                 Caminhada caminhada = new Caminhada();
                 caminhada.setData(c.getString(0));
-                //inserir tempo
                 caminhada.setPassos(c.getInt(1));
-                caminhada.setDistancia(c.getInt(2));
-                caminhada.setVelocidade(c.getInt(3));
-                caminhada.setCalorias(c.getInt(4));
+                caminhada.setbMilliseconds(c.getLong(2));
+                caminhada.setDistancia(c.getInt(3));
+                caminhada.setVelocidade(c.getInt(4));
+                caminhada.setCalorias(c.getInt(5));
 
                 listCaminhadas.add(caminhada);
             }while(c.moveToNext());
