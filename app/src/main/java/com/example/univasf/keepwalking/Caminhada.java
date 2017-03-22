@@ -1,5 +1,8 @@
 package com.example.univasf.keepwalking;
 
+import android.os.SystemClock;
+import android.widget.Chronometer;
+
 public class Caminhada {
     private String data;
     private int passos;
@@ -7,7 +10,12 @@ public class Caminhada {
     private int velocidade;
     private int calorias;
 
-    public Caminhada(){}
+    private Chronometer ch;
+    private long milliseconds=0;
+    private long bMilliseconds;
+
+    public Caminhada(){
+    }
 
     public Caminhada(String data, int passos, int distancia, int velocidade, int calorias){
         this.data = data;
@@ -35,7 +43,16 @@ public class Caminhada {
         this.passos = passos;
     }
 
-    //inserir tempo
+    public void setCh(Chronometer ch) {
+        this.ch = ch;
+    }
+
+    public void setbMilliseconds(long bMilliseconds){
+        this.bMilliseconds = bMilliseconds;
+    }
+    public long getbMilliseconds(){
+        return bMilliseconds;
+    }
 
     public int getDistancia() {
         return distancia;
@@ -61,12 +78,22 @@ public class Caminhada {
         this.calorias = calorias;
     }
 
-    public void add (int newPassos, int newDistancia, int newVelocidade, int newCalorias){
-        setPassos(getPassos() + newPassos);
-        //inserir tempo
-        setDistancia(getDistancia() + newDistancia);
-        setVelocidade((getVelocidade() + newVelocidade)/2);
-        setCalorias(getCalorias() + newCalorias);
+    public void startChronometer (){
+        ch.setBase(SystemClock.elapsedRealtime() - milliseconds);
+        ch.start();
+    }
+
+    public void pauseChronometer(){
+        milliseconds = SystemClock.elapsedRealtime() - ch.getBase();
+        ch.stop();
+    }
+
+    public void clearChronometer (){
+        bMilliseconds = SystemClock.elapsedRealtime() - ch.getBase();
+        milliseconds = 0;
+        ch.setBase(SystemClock.elapsedRealtime());
+        ch.start();
+        ch.stop();
     }
 
     @Override
@@ -74,5 +101,6 @@ public class Caminhada {
         //inserir tempo
         return data + "\n" + passos + " passos | " + distancia + " m | " + velocidade + " m/s | " + calorias + " kcal";
     }
+
 
 }

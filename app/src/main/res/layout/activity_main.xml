@@ -30,12 +30,11 @@
         <TextView
             android:id="@+id/valuePassos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_height="90dp"
             android:gravity="center"
             android:text="@string/valueDefault"
             android:textColor="@color/colorAccent"
-            android:textSize="60sp" />
+            android:textSize="25sp" />
 
     </FrameLayout>
 
@@ -72,15 +71,15 @@
                 android:text="@string/min"
                 android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/valueTempo"
+            <Chronometer
+                android:id="@+id/chronometer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_height="90dp"
                 android:gravity="center"
                 android:text="@string/valueDefault"
                 android:textColor="@color/colorAccent"
-                android:textSize="50sp" />
+                android:textSize="25sp"
+                />
 
         </FrameLayout>
 
@@ -112,12 +111,11 @@
             <TextView
                 android:id="@+id/valueDistancia"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_height="90dp"
                 android:gravity="center"
                 android:text="@string/valueDefault"
                 android:textColor="@color/colorAccent"
-                android:textSize="50sp" />
+                android:textSize="25sp" />
 
         </FrameLayout>
 
@@ -159,12 +157,11 @@
             <TextView
                 android:id="@+id/valueVelocidade"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_height="90dp"
                 android:gravity="center"
                 android:text="@string/valueDefault"
                 android:textColor="@color/colorAccent"
-                android:textSize="50sp" />
+                android:textSize="25sp" />
 
         </FrameLayout>
 
@@ -196,12 +193,11 @@
             <TextView
                 android:id="@+id/valueCalorias"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_height="90dp"
                 android:gravity="center"
                 android:text="@string/valueDefault"
                 android:textColor="@color/colorAccent"
-                android:textSize="50sp" />
+                android:textSize="25sp" />
 
         </FrameLayout>
 

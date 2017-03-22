@@ -59,8 +59,6 @@ public class HistoryActivity extends AppCompatActivity {
         btVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent main = new Intent(HistoryActivity.this, MainActivity.class);
-                startActivity(main);
                 finish();
             }
         });
@@ -111,6 +109,8 @@ public class HistoryActivity extends AppCompatActivity {
 
     public void limparDb(View v){
         dbHelper.limpar();
+        listaCaminhada.removeAll(listaCaminhada);
+        listaCaminhada.clear();
         listaCaminhada = dbHelper.selectTodasAsCaminhadas();
 
         ArrayAdapter<Caminhada> adp = new ArrayAdapter<Caminhada>(this, android.R.layout.simple_list_item_1, listaCaminhada);
@@ -118,7 +118,7 @@ public class HistoryActivity extends AppCompatActivity {
         listCaminhada.setAdapter(adp);
     }
 
-    public void totalDb(View v){
+    public void totalDb(View v) {
 
         int passos = 0;
         //inserir tempo
@@ -127,26 +127,41 @@ public class HistoryActivity extends AppCompatActivity {
         int calorias = 0;
         int n = 0;
 
-        for (Iterator iterator = listaCaminhada.iterator(); iterator.hasNext();) {
-            Caminhada caminhada = (Caminhada) iterator.next();
+        if (listaCaminhada.isEmpty()) {
 
-            passos = passos + caminhada.getPassos();
+            // Caixa de diálogo
+            AlertDialog.Builder builder = new AlertDialog.Builder(HistoryActivity.this, R.style.Theme_AppCompat_Dialog_Alert);
+
             //inserir tempo
-            distancia = distancia + caminhada.getDistancia();
-            velocidade = velocidade + caminhada.getVelocidade();
-            calorias = calorias + caminhada.getCalorias();
-            n++;
+            builder.setMessage("Nenhum dado de caminhada encontrado");
+            builder.setTitle("Total");
+            builder.setPositiveButton("OK", null);
+            builder.show();
+
+        } else {
+
+            for (Iterator iterator = listaCaminhada.iterator(); iterator.hasNext(); ) {
+                Caminhada caminhada = (Caminhada) iterator.next();
+
+                passos = passos + caminhada.getPassos();
+                //inserir tempo
+                distancia = distancia + caminhada.getDistancia();
+                velocidade = velocidade + caminhada.getVelocidade();
+                calorias = calorias + caminhada.getCalorias();
+                n++;
+            }
+            velocidade = velocidade / n;
+
+            // Caixa de diálogo
+            AlertDialog.Builder builder = new AlertDialog.Builder(HistoryActivity.this, R.style.Theme_AppCompat_Dialog_Alert);
+
+            //inserir tempo
+            builder.setMessage("Passos: " + passos + "\nDistância: " + distancia + " m \nVelocidade média: " + velocidade + "m/s \nCalorias: " + calorias + " kcal");
+            builder.setTitle("Total");
+            builder.setPositiveButton("OK", null);
+            builder.show();
         }
-        velocidade = velocidade / n;
-
-        // Caixa de diálogo
-        AlertDialog.Builder builder = new AlertDialog.Builder(HistoryActivity.this, R.style.Theme_AppCompat_Dialog_Alert);
-
-        //inserir tempo
-        builder.setMessage("Passos: " + passos + "\nDistância: " + distancia + " m \nVelocidade média: " + velocidade + "m/s \nCalorias: " + calorias + " kcal");
-        builder.setTitle("Total");
-        builder.setPositiveButton("OK", null);
-        builder.show();
     }
 
 }
+

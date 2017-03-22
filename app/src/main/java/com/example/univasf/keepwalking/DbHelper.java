@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,15 +53,23 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public void insertCaminhada(Caminhada caminhada){
         SQLiteDatabase db = getWritableDatabase();
-
         ContentValues cv = new ContentValues();
 
-        cv.put("data", caminhada.getData());
-        cv.put("passos", caminhada.getPassos());
-        //inserir tempo
-        cv.put("distancia", caminhada.getDistancia());
-        cv.put("velocidade", caminhada.getVelocidade());
-        cv.put("calorias", caminhada.getCalorias());
+        String sqlSearchData = "SELECT data FROM caminhada WHERE data = '" + caminhada.getData() + "'";
+        Cursor c = db.rawQuery(sqlSearchData, null);
+
+       if(c.moveToFirst()){
+            Log.i("Test Banco", "data encontrada");
+
+        }else {
+            Log.i("Test Banco", "data NAO encontrada");
+            cv.put("data", caminhada.getData());
+            cv.put("passos", caminhada.getPassos());
+            //inserir tempo
+            cv.put("distancia", caminhada.getDistancia());
+            cv.put("velocidade", caminhada.getVelocidade());
+            cv.put("calorias", caminhada.getCalorias());
+        }
 
         db.insert("caminhada", null, cv);
 

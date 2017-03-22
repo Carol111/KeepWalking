@@ -8,7 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.graphics.Typeface;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.TextView;
+import java.text.DateFormat;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -25,6 +28,11 @@ public class MainActivity extends AppCompatActivity{
     Button btZerar;
 
     char btFlag;
+    DbHelper dbHelper;
+
+    String currentDateTimeString;
+
+    Caminhada caminhada= new Caminhada();
 
     // Metodo para mudar a fonte
     private void changeFont(TextView tv, String fonte) {
@@ -64,9 +72,11 @@ public class MainActivity extends AppCompatActivity{
         changeFont(btIniciar, "fonts/annabelle.ttf");
         changeFont(btZerar, "fonts/annabelle.ttf");
 
+        caminhada.setCh((Chronometer) findViewById(R.id.chronometer));
+
         //TESTE DB
 
-        DbHelper dbHelper = new DbHelper(this);
+        dbHelper = new DbHelper(this);
 
         Caminhada c1 = new Caminhada("Mar 16, 2017",200,10,1,100);
         Caminhada c2 = new Caminhada("Mar 17, 2017",200,10,1,100);
@@ -102,17 +112,14 @@ public class MainActivity extends AppCompatActivity{
                     case R.id.action_about:{
                         Intent about = new Intent(MainActivity.this, AboutActivity.class);
                         startActivity(about);
-                        finish();
                         return true;}
                     case R.id.action_help:{
                         Intent help = new Intent(MainActivity.this, HelpActivity.class);
                         startActivity(help);
-                        finish();
                         return true;}
                     case R.id.action_history:{
                         Intent history = new Intent(MainActivity.this, HistoryActivity.class);
                         startActivity(history);
-                        finish();
                         return true;}
                     default:
                         return false;
@@ -122,17 +129,21 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
+
     public void clickIniciar(View v){
+
         switch (btFlag){
             case 'I':
             case 'C':{
                 btFlag = 'P';
                 btIniciar.setText(R.string.pausar);
 
-                //Chamar funcoes
+                currentDateTimeString = DateFormat.getDateInstance().format(new Date());
+                caminhada.setData(currentDateTimeString);
 
+                //Chamar funcoes
+                caminhada.startChronometer ();
                 //funcPassos();
-                //funcTempo();
                 //funcDistancia();
                 //funcVelocidade();
                 //funcCalorias();
@@ -141,6 +152,9 @@ public class MainActivity extends AppCompatActivity{
             case 'P':{
                 btFlag = 'C';
                 btIniciar.setText(R.string.cont);
+
+                caminhada.pauseChronometer();
+
                 return;
             }
             default:
@@ -151,6 +165,8 @@ public class MainActivity extends AppCompatActivity{
     public void clickZerar(View v){
         btFlag = 'I';
         btIniciar.setText(R.string.inic);
+        dbHelper.insertCaminhada(caminhada);
+        caminhada.clearChronometer();
         // inserir dados em um objeto da classe caminhada e inserir o objeto na lista
     }
 }
