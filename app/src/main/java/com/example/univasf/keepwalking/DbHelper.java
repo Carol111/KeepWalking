@@ -17,8 +17,6 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String NOME_BASE = "MinhasCaminhadas";
     private static final int VERSAO_BASE = 1;
 
-    private float tempo=0;
-
     public DbHelper(Context context) {
         super(context, NOME_BASE, null, VERSAO_BASE);
     }
@@ -57,20 +55,19 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        String sqlSearchData = "SELECT data FROM caminhada WHERE data = '" + caminhada.getData() + "'";
+        String sqlSearchData = "SELECT * FROM caminhada WHERE data = '" + caminhada.getData() + "'";
         Cursor c = db.rawQuery(sqlSearchData, null);
 
        if(c.moveToFirst()){
 
-            //tempo = tempo + (caminhada.getbMilliseconds());
-
-            Log.i("Test Banco", "data encontrada");
-            cv.put("data", caminhada.getData());
+            Log.i("Test Banco", "data encontrada ");
             cv.put("passos", caminhada.getPassos());
-            cv.put("tempo", caminhada.getTempo());
+            cv.put("tempo", c.getLong(2) + caminhada.getTempo());
             cv.put("distancia", caminhada.getDistancia());
             cv.put("velocidade", caminhada.getVelocidade());
             cv.put("calorias", caminhada.getCalorias());
+
+            db.update("caminhada", cv, "data= '" + caminhada.getData() + "'", null);
 
         }else {
             Log.i("Test Banco", "data NAO encontrada");
@@ -80,10 +77,11 @@ public class DbHelper extends SQLiteOpenHelper {
             cv.put("distancia", caminhada.getDistancia());
             cv.put("velocidade", caminhada.getVelocidade());
             cv.put("calorias", caminhada.getCalorias());
+
+           db.insert("caminhada", null, cv);
         }
 
-        db.insert("caminhada", null, cv);
-
+        cv.clear();
         db.close();
     }
 

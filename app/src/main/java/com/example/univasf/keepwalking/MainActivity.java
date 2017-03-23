@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity{
         builder.show();
         /////////////////////////////*/
 
-        dbHelper.insertCaminhada(caminhada);
+        if(btFlag != 'I') dbHelper.insertCaminhada(caminhada);
         btFlag = 'I';
 
     }
