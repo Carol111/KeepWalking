@@ -1,9 +1,17 @@
 package com.example.univasf.keepwalking;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.SystemClock;
 import android.widget.Chronometer;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.widget.TextView;
 
-public class Caminhada {
+public class Caminhada{
+
     private String data;
     private int passos;
     private int distancia;
@@ -18,7 +26,18 @@ public class Caminhada {
     static final int min = 60000;
     static final int sec = 1000;
 
+    private Sensor mySensor;
+    private TextView vPassos;
+    private SensorManager sManager;
+    private SensorEventListener sListener;
+    private int direcao;
+
     public Caminhada(){
+        milliseconds = 0;
+        tempo = 0;
+        passos = 0;
+        direcao = 1;
+
     }
 
     public Caminhada(String data, int passos, long tempo, int distancia, int velocidade, int calorias){
@@ -37,14 +56,6 @@ public class Caminhada {
 
     public void setData(String data) {
         this.data = data;
-    }
-
-    public int getPassos() {
-        return passos;
-    }
-
-    public void setPassos(int passos) {
-        this.passos = passos;
     }
 
     public void setCh(Chronometer ch) {
@@ -83,10 +94,6 @@ public class Caminhada {
     }
 
     public void startChronometer (char flag){
-        if(flag == 'I'){
-            milliseconds=0;
-            tempo=0;
-        }
         ch.setBase(SystemClock.elapsedRealtime() - milliseconds);
         ch.start();
     }
@@ -108,6 +115,19 @@ public class Caminhada {
         ch.stop();
     }
 
+    public int getPassos() {
+        return passos;
+    }
+
+    public void setPassos(int passos) {
+        this.passos = passos;
+    }
+
+    public void clearPassos() {
+        passos = 0;
+        vPassos.setText("" + passos);
+    }
+
     @Override
     public String toString() {
         return data + "\n"
@@ -120,5 +140,56 @@ public class Caminhada {
                 + calorias + " kcal";
     }
 
+    public void startPassos (final Context context){
+
+        vPassos = (TextView) ((Activity)context).findViewById(R.id.valuePassos);
+
+        sManager = (SensorManager) context.getSystemService(context.SENSOR_SERVICE);
+        mySensor = sManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
+        sListener = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent sensorEvent) {
+                if(sensorEvent.values[1] > 0) {
+                    if (sensorEvent.values[2] > 2.6 && direcao == 1) {
+                        direcao = -1;
+                        passos++;
+                        vPassos.setText("" + passos);
+                    }
+                    if (sensorEvent.values[2] < 1.5 && direcao == -1)
+                        if(sensorEvent.values[2] < -0.6 && direcao == -1){
+                            direcao = 1;
+                            passos++;
+                            vPassos.setText("" + passos);
+                        }
+                }
+                else{
+                    if (sensorEvent.values[2] > 2.6 && direcao == 1) {
+                        direcao = -1;
+                        passos++;
+                            vPassos.setText("" + passos);
+                    }
+                    if (sensorEvent.values[2] < 1.5 && direcao == -1)
+                        if(sensorEvent.values[2] < -0.6 && direcao == -1){
+                            direcao = 1;
+                            passos++;
+                            vPassos.setText("" + passos);
+                        }
+                }
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int i) {
+
+            }
+        };
+
+        sManager.registerListener(sListener, mySensor, SensorManager.SENSOR_DELAY_NORMAL);
+
+    }
+
+    public void pausePassos (){
+        sManager.unregisterListener(sListener);
+    }
 
 }

@@ -61,7 +61,7 @@ public class DbHelper extends SQLiteOpenHelper {
        if(c.moveToFirst()){
 
             Log.i("Test Banco", "data encontrada ");
-            cv.put("passos", caminhada.getPassos());
+            cv.put("passos", c.getLong(1) + caminhada.getPassos());
             cv.put("tempo", c.getLong(2) + caminhada.getTempo());
             cv.put("distancia", caminhada.getDistancia());
             cv.put("velocidade", caminhada.getVelocidade());

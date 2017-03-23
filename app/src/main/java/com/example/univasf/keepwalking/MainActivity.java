@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.text.DateFormat;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     TextView textKeepWalking;
     TextView textCaminhada;
@@ -73,30 +73,12 @@ public class MainActivity extends AppCompatActivity{
         changeFont(btIniciar, "fonts/annabelle.ttf");
         changeFont(btZerar, "fonts/annabelle.ttf");
 
+        //Values
         caminhada.setCh((Chronometer) findViewById(R.id.chronometer));
 
         //TESTE DB
 
         dbHelper = new DbHelper(this);
-
-        Caminhada c1 = new Caminhada("Mar 16, 2017",200,10,10,1,100);
-        /*Caminhada c2 = new Caminhada("Mar 17, 2017",200,10,1,100);
-        Caminhada c3 = new Caminhada("Mar 18, 2017",200,10,1,100);
-        Caminhada c4 = new Caminhada("Mar 19, 2017",200,10,1,100);
-        Caminhada c5 = new Caminhada("Mar 20, 2017",200,10,1,100);
-        Caminhada c6 = new Caminhada("Mar 21, 2017",200,10,1,100);
-        Caminhada c7 = new Caminhada("Mar 22, 2017",200,10,1,100);
-        Caminhada c8 = new Caminhada("Mar 23, 2017",200,10,1,100);*/
-
-        dbHelper.insertCaminhada(c1);/*
-        dbHelper.insertCaminhada(c2);
-        dbHelper.insertCaminhada(c3);
-        dbHelper.insertCaminhada(c4);
-        dbHelper.insertCaminhada(c5);
-        dbHelper.insertCaminhada(c6);
-        dbHelper.insertCaminhada(c7);
-        dbHelper.insertCaminhada(c8);*/
-
     }
 
     // Menu Popup
@@ -134,7 +116,7 @@ public class MainActivity extends AppCompatActivity{
     public void clickIniciar(View v){
 
         switch (btFlag){
-            case 'I': caminhada.startChronometer (btFlag);
+            case 'I':
             case 'C':{
                 btFlag = 'P';
                 btIniciar.setText(R.string.pausar);
@@ -144,7 +126,7 @@ public class MainActivity extends AppCompatActivity{
 
                 //Chamar funcoes
                 caminhada.startChronometer (btFlag);
-                //funcPassos();
+                caminhada.startPassos(this);
                 //funcTempo();
                 //funcDistancia();
                 //funcVelocidade();
@@ -156,6 +138,7 @@ public class MainActivity extends AppCompatActivity{
                 btIniciar.setText(R.string.cont);
 
                 caminhada.pauseChronometer();
+                caminhada.pausePassos();
 
                 return;
             }
@@ -169,15 +152,16 @@ public class MainActivity extends AppCompatActivity{
         btIniciar.setText(R.string.inic);
         caminhada.clearChronometer(btFlag);
 
-/*
-        // Caixa de diálogo de TESTES
+        /*/ Caixa de diálogo de TESTES
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.Theme_AppCompat_Dialog_Alert);
-        builder.setMessage("Tempo: " + caminhada.getbMilliseconds());
+        builder.setMessage("passos: " + caminhada.getContador());
         builder.setPositiveButton("OK", null);
         builder.show();
-        /////////////////////////////*/
+        ////////////////////////////*/
 
         if(btFlag != 'I') dbHelper.insertCaminhada(caminhada);
+
+        caminhada.clearPassos();
         btFlag = 'I';
 
     }
