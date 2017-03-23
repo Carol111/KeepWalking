@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 caminhada.setData(currentDateTimeString);
 
                 caminhada.startPassos(this);
-                caminhada.startChronometer (btFlag);
+                caminhada.startChronometer();
                 //metodoDistancia();
                 //metodoVelocidade();
                 //metodoCalorias();

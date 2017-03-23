@@ -171,7 +171,7 @@ public class Caminhada{
     //////////////////////////////////////////////////////
     //TEMPO
 
-    public void startChronometer (char flag){
+    public void startChronometer (){
         ch.setBase(SystemClock.elapsedRealtime() - milliseconds);
         ch.start();
     }
