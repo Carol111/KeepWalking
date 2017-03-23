@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +20,7 @@ public class DbHelper extends SQLiteOpenHelper {
         super(context, NOME_BASE, null, VERSAO_BASE);
     }
 
+    //Criar tabela
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sqlCreateTabelaCaminhada = "CREATE TABLE caminhada("
@@ -35,6 +35,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     }
 
+    //Upgrade
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
@@ -44,6 +45,7 @@ public class DbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    //Limpar banco de dados
     public void limpar (){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -51,16 +53,19 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(sqlDelete);
     }
 
+    //Inserir nova linha na tabela
     public void insertCaminhada(Caminhada caminhada){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
 
+        //verificar se já existe uma linha na tabela para a data atual
         String sqlSearchData = "SELECT * FROM caminhada WHERE data = '" + caminhada.getData() + "'";
         Cursor c = db.rawQuery(sqlSearchData, null);
 
        if(c.moveToFirst()){
 
-            Log.i("Test Banco", "data encontrada ");
+           //Se já existir ATUALIZAR
+
             cv.put("passos", c.getLong(1) + caminhada.getPassos());
             cv.put("tempo", c.getLong(2) + caminhada.getTempo());
             cv.put("distancia", caminhada.getDistancia());
@@ -70,7 +75,9 @@ public class DbHelper extends SQLiteOpenHelper {
             db.update("caminhada", cv, "data= '" + caminhada.getData() + "'", null);
 
         }else {
-            Log.i("Test Banco", "data NAO encontrada");
+
+           //Se não existir INSERIR
+
             cv.put("data", caminhada.getData());
             cv.put("passos", caminhada.getPassos());
             cv.put("tempo", caminhada.getTempo());
@@ -85,6 +92,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    //Inserir linhas da tabela na lista a ser mostrada no HISTÓRICO
     public List<Caminhada> selectTodasAsCaminhadas(){
 
         List<Caminhada> listCaminhadas = new ArrayList<Caminhada>();

@@ -57,8 +57,8 @@
     <string name="ajuda">Ajuda</string>
     <string name="infoAjuda">Clique no botão INICIAR ao começar sua caminhada,
         certifique-se de clicar em PAUSAR ao parar sua caminhada, depois da pausa,
-        clique em CONTINUAR para continuar caso continue a caminhada. Para apagar os
-        valores, clique em ZERAR, assim pode começar uma nova caminhada com novos dados. \n\n
+        clique em CONTINUAR para continuar caso continue a caminhada. Para salvar os
+        valores clique em SALVAR, assim pode começar uma nova caminhada com novos dados. \n\n
         Na opção HISTÓRICO é possível ver o resumo dos dados da caminhada a cada dia
         e o total geral. Clique em LIMPAR para zerar o histórico.</string>
     <!-- ************************************ -->

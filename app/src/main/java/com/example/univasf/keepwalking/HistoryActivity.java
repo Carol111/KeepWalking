@@ -67,8 +67,7 @@ public class HistoryActivity extends AppCompatActivity {
             }
         });
 
-        //TESTE DB
-
+        //Exibir o que já existe no banco de dados
         dbHelper = new DbHelper(this);
 
         listCaminhada = (ListView) findViewById(R.id.listCaminhada);
@@ -111,6 +110,7 @@ public class HistoryActivity extends AppCompatActivity {
         });
     }
 
+    //Limpar o HISTÓRICO
     public void limparDb(View v){
         dbHelper.limpar();
         listaCaminhada.removeAll(listaCaminhada);
@@ -122,6 +122,7 @@ public class HistoryActivity extends AppCompatActivity {
         listCaminhada.setAdapter(adp);
     }
 
+    //Exibir TOTAL geral
     public void totalDb(View v) {
 
         int passos = 0;
@@ -132,17 +133,19 @@ public class HistoryActivity extends AppCompatActivity {
         int n = 0;
 
         if (listaCaminhada.isEmpty()) {
+            // Se não existir nenhum histórico de caminhadas
 
             // Caixa de diálogo
             AlertDialog.Builder builder = new AlertDialog.Builder(HistoryActivity.this, R.style.Theme_AppCompat_Dialog_Alert);
 
-            //inserir tempo
-            builder.setMessage("Nenhum dado de caminhada encontrado");
+            builder.setMessage("Nenhum histórico encontrado");
             builder.setTitle("Total");
             builder.setPositiveButton("OK", null);
             builder.show();
 
         } else {
+
+            // Se existir histórico
 
             for (Iterator iterator = listaCaminhada.iterator(); iterator.hasNext(); ) {
                 Caminhada caminhada = (Caminhada) iterator.next();
@@ -156,7 +159,7 @@ public class HistoryActivity extends AppCompatActivity {
             }
             velocidade = velocidade / n;
 
-            // Caixa de diálogo para exibir o TOTAL de todas as caminhadas
+            // Caixa de diálogo com o TOTAL geral
             AlertDialog.Builder builder = new AlertDialog.Builder(HistoryActivity.this, R.style.Theme_AppCompat_Dialog_Alert);
 
             builder.setMessage("Passos: " + passos

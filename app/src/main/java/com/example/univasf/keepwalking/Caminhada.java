@@ -12,25 +12,30 @@ import android.widget.TextView;
 
 public class Caminhada{
 
+    //Variáveis armazenadas no BANCO
     private String data;
     private int passos;
+    private long tempo;
     private int distancia;
     private int velocidade;
     private int calorias;
 
-    private Chronometer ch;
-    private long milliseconds;
-    private long tempo;
-
-    static final int hora = 3600000;
-    static final int min = 60000;
-    static final int sec = 1000;
-
+    //Auxiliares de PASSOS
     private Sensor mySensor;
     private TextView vPassos;
     private SensorManager sManager;
     private SensorEventListener sListener;
     private int direcao;
+
+    //Auxiliares do TEMPO
+    private Chronometer ch;
+    private long milliseconds;
+    static final int hora = 3600000;
+    static final int min = 60000;
+    static final int sec = 1000;
+
+    //////////////////////////////////////////////////////
+    //Construtores
 
     public Caminhada(){
         milliseconds = 0;
@@ -49,7 +54,8 @@ public class Caminhada{
         this.calorias = calorias;
     }
 
-
+    //////////////////////////////////////////////////////
+    //Get e Set
     public String getData() {
         return data;
     }
@@ -65,6 +71,7 @@ public class Caminhada{
     public void setTempo(long bMilliseconds){
         this.tempo = bMilliseconds;
     }
+
     public long getTempo(){
         return tempo;
     }
@@ -93,28 +100,6 @@ public class Caminhada{
         this.calorias = calorias;
     }
 
-    public void startChronometer (char flag){
-        ch.setBase(SystemClock.elapsedRealtime() - milliseconds);
-        ch.start();
-    }
-
-    public void pauseChronometer(){
-        milliseconds = SystemClock.elapsedRealtime() - ch.getBase();
-        ch.stop();
-    }
-
-    public void clearChronometer (char flag){
-
-        if(flag == 'C'){
-            tempo = milliseconds;
-        }else tempo = SystemClock.elapsedRealtime() - ch.getBase();
-
-        milliseconds = 0;
-        ch.setBase(SystemClock.elapsedRealtime());
-        ch.start();
-        ch.stop();
-    }
-
     public int getPassos() {
         return passos;
     }
@@ -123,22 +108,8 @@ public class Caminhada{
         this.passos = passos;
     }
 
-    public void clearPassos() {
-        passos = 0;
-        vPassos.setText("" + passos);
-    }
-
-    @Override
-    public String toString() {
-        return data + "\n"
-                + passos + " passos | "
-                + tempo/hora + "h "
-                + (tempo%hora)/min + "m "
-                + ((tempo%hora)%min)/sec + "s | "
-                + distancia + " m | "
-                + velocidade + " m/s | "
-                + calorias + " kcal";
-    }
+    //////////////////////////////////////////////////////
+    //PASSOS
 
     public void startPassos (final Context context){
 
@@ -190,6 +161,60 @@ public class Caminhada{
 
     public void pausePassos (){
         sManager.unregisterListener(sListener);
+    }
+
+    public void clearPassos() {
+        passos = 0;
+        vPassos.setText("" + passos);
+    }
+
+    //////////////////////////////////////////////////////
+    //TEMPO
+
+    public void startChronometer (char flag){
+        ch.setBase(SystemClock.elapsedRealtime() - milliseconds);
+        ch.start();
+    }
+
+    public void pauseChronometer(){
+        milliseconds = SystemClock.elapsedRealtime() - ch.getBase();
+        ch.stop();
+    }
+
+    public void clearChronometer (char flag){
+
+        if(flag == 'C'){
+            tempo = milliseconds;
+        }else tempo = SystemClock.elapsedRealtime() - ch.getBase();
+
+        milliseconds = 0;
+        ch.setBase(SystemClock.elapsedRealtime());
+        ch.start();
+        ch.stop();
+    }
+
+    //////////////////////////////////////////////////////
+    //DISTANCIA
+
+    //////////////////////////////////////////////////////
+    //VELOCIDADE
+
+    //////////////////////////////////////////////////////
+    //CALORIAS
+
+    //////////////////////////////////////////////////////
+
+    //Formatação de saída
+    @Override
+    public String toString() {
+        return data + "\n"
+                + passos + " passos | "
+                + tempo/hora + "h "
+                + (tempo%hora)/min + "m "
+                + ((tempo%hora)%min)/sec + "s | "
+                + distancia + " m | "
+                + velocidade + " m/s | "
+                + calorias + " kcal";
     }
 
 }

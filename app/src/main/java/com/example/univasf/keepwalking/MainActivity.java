@@ -76,8 +76,7 @@ public class MainActivity extends AppCompatActivity {
         //Values
         caminhada.setCh((Chronometer) findViewById(R.id.chronometer));
 
-        //TESTE DB
-
+        //Banco de dados
         dbHelper = new DbHelper(this);
     }
 
@@ -113,32 +112,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //EXECUÇÃO
     public void clickIniciar(View v){
 
         switch (btFlag){
             case 'I':
             case 'C':{
+
+                //INICIAR ou CONTINUAR a execução
+
                 btFlag = 'P';
                 btIniciar.setText(R.string.pausar);
 
                 currentDateTimeString = DateFormat.getDateInstance().format(new Date());
                 caminhada.setData(currentDateTimeString);
 
-                //Chamar funcoes
-                caminhada.startChronometer (btFlag);
                 caminhada.startPassos(this);
-                //funcTempo();
-                //funcDistancia();
-                //funcVelocidade();
-                //funcCalorias();
+                caminhada.startChronometer (btFlag);
+                //metodoDistancia();
+                //metodoVelocidade();
+                //metodoCalorias();
                 return;
             }
             case 'P':{
+
+                //PAUSAR a execução
+
                 btFlag = 'C';
                 btIniciar.setText(R.string.cont);
 
-                caminhada.pauseChronometer();
                 caminhada.pausePassos();
+                caminhada.pauseChronometer();
 
                 return;
             }
@@ -159,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
         ////////////////////////////*/
 
+        //Inserir dados no banco apenas quando já houve execução dos métodos
         if(btFlag != 'I') dbHelper.insertCaminhada(caminhada);
 
         caminhada.clearPassos();
