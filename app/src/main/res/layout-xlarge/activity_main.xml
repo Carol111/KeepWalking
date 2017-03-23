@@ -240,7 +240,7 @@
             android:layout_height="80dp"
             android:layout_marginLeft="100dp"
             android:background="@drawable/rectangle_dark"
-            android:text="@string/zerar"
+            android:text="@string/salvar"
             android:textSize="35sp"
             android:textStyle="bold"
             android:textColor="#DDDDDD"

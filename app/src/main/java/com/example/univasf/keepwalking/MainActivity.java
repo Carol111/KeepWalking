@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity{
     public void clickIniciar(View v){
 
         switch (btFlag){
-            case 'I':
+            case 'I': caminhada.startChronometer (btFlag);
             case 'C':{
                 btFlag = 'P';
                 btIniciar.setText(R.string.pausar);
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity{
                 caminhada.setData(currentDateTimeString);
 
                 //Chamar funcoes
-                caminhada.startChronometer ();
+                caminhada.startChronometer (btFlag);
                 //funcPassos();
                 //funcTempo();
                 //funcDistancia();

@@ -26,6 +26,10 @@ public class HistoryActivity extends AppCompatActivity {
 
     private ListView listCaminhada;
 
+    static final int hora = 3600000;
+    static final int min = 60000;
+    static final int sec = 1000;
+
     // Metodo para mudar a fonte
     private void changeFont(TextView tv, String fonte) {
         Typeface type = Typeface.createFromAsset(getAssets(), fonte);
@@ -121,7 +125,7 @@ public class HistoryActivity extends AppCompatActivity {
     public void totalDb(View v) {
 
         int passos = 0;
-        //inserir tempo
+        long tempo = 0;
         int distancia = 0;
         int velocidade = 0;
         int calorias = 0;
@@ -143,20 +147,25 @@ public class HistoryActivity extends AppCompatActivity {
             for (Iterator iterator = listaCaminhada.iterator(); iterator.hasNext(); ) {
                 Caminhada caminhada = (Caminhada) iterator.next();
 
-                passos = passos + caminhada.getPassos();
-                //inserir tempo
-                distancia = distancia + caminhada.getDistancia();
-                velocidade = velocidade + caminhada.getVelocidade();
-                calorias = calorias + caminhada.getCalorias();
+                passos += caminhada.getPassos();
+                tempo += caminhada.getTempo();
+                distancia += caminhada.getDistancia();
+                velocidade += caminhada.getVelocidade();
+                calorias += caminhada.getCalorias();
                 n++;
             }
             velocidade = velocidade / n;
 
-            // Caixa de diálogo
+            // Caixa de diálogo para exibir o TOTAL de todas as caminhadas
             AlertDialog.Builder builder = new AlertDialog.Builder(HistoryActivity.this, R.style.Theme_AppCompat_Dialog_Alert);
 
-            //inserir tempo
-            builder.setMessage("Passos: " + passos + "\nDistância: " + distancia + " m \nVelocidade média: " + velocidade + "m/s \nCalorias: " + calorias + " kcal");
+            builder.setMessage("Passos: " + passos
+                    + "\nTempo: " + tempo/hora + "h "
+                    + (tempo%hora)/min + "m "
+                    + ((tempo%hora)%min)/sec + "s"
+                    + "\nDistância: " + distancia
+                    + " m \nVelocidade média: " + velocidade
+                    + "m/s \nCalorias: " + calorias + " kcal");
             builder.setTitle("Total");
             builder.setPositiveButton("OK", null);
             builder.show();

@@ -12,21 +12,19 @@ public class Caminhada {
 
     private Chronometer ch;
     private long milliseconds;
-    private long bMilliseconds;
+    private long tempo;
 
     static final int hora = 3600000;
     static final int min = 60000;
     static final int sec = 1000;
 
     public Caminhada(){
-        milliseconds=0;
-        bMilliseconds=0;
     }
 
     public Caminhada(String data, int passos, long tempo, int distancia, int velocidade, int calorias){
         this.data = data;
         this.passos = passos;
-        this.bMilliseconds = tempo;
+        this.tempo = tempo;
         this.distancia = distancia;
         this.velocidade = velocidade;
         this.calorias = calorias;
@@ -53,11 +51,11 @@ public class Caminhada {
         this.ch = ch;
     }
 
-    public void setbMilliseconds(long bMilliseconds){
-        this.bMilliseconds = bMilliseconds;
+    public void setTempo(long bMilliseconds){
+        this.tempo = bMilliseconds;
     }
-    public long getbMilliseconds(){
-        return bMilliseconds;
+    public long getTempo(){
+        return tempo;
     }
 
     public int getDistancia() {
@@ -84,7 +82,11 @@ public class Caminhada {
         this.calorias = calorias;
     }
 
-    public void startChronometer (){
+    public void startChronometer (char flag){
+        if(flag == 'I'){
+            milliseconds=0;
+            tempo=0;
+        }
         ch.setBase(SystemClock.elapsedRealtime() - milliseconds);
         ch.start();
     }
@@ -97,8 +99,8 @@ public class Caminhada {
     public void clearChronometer (char flag){
 
         if(flag == 'C'){
-            bMilliseconds = milliseconds;
-        }else bMilliseconds = SystemClock.elapsedRealtime() - ch.getBase();
+            tempo = milliseconds;
+        }else tempo = SystemClock.elapsedRealtime() - ch.getBase();
 
         milliseconds = 0;
         ch.setBase(SystemClock.elapsedRealtime());
@@ -110,9 +112,9 @@ public class Caminhada {
     public String toString() {
         return data + "\n"
                 + passos + " passos | "
-                + bMilliseconds/hora + "h"
-                + (bMilliseconds%hora)/min + "m"
-                + ((bMilliseconds%hora)%min)/sec + "s" + " | "
+                + tempo/hora + "h "
+                + (tempo%hora)/min + "m "
+                + ((tempo%hora)%min)/sec + "s | "
                 + distancia + " m | "
                 + velocidade + " m/s | "
                 + calorias + " kcal";

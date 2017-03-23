@@ -16,7 +16,7 @@
     <string name="inic">Iniciar</string>
     <string name="pausar">Pausar</string>
     <string name="cont">Continuar</string>
-    <string name="zerar">Zerar</string>
+    <string name="salvar">Salvar</string>
 
     <!-- Circulos -->
     <!-- text -->
@@ -41,7 +41,7 @@
 
     <!-- Texto -->
     <string name="sobre">Sobre</string>
-    <string name="descricao">O Keep Walking auxilia o usuário e torna a sua caminhada mais intuitiva e estimulante, incentivando-o a manter uma vida mais saudável.</string>
+    <string name="descricao">O Keep Walking auxilia o usuário em sua caminhada e a torna mais intuitiva e estimulante, incentivando-o a manter uma vida mais saudável.</string>
     <string name="integrantesA">Integrantes</string>
     <string name="integrantesB">Allisson Pierre \n
     Allisson Lima \n

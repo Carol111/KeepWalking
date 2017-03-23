@@ -17,6 +17,8 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String NOME_BASE = "MinhasCaminhadas";
     private static final int VERSAO_BASE = 1;
 
+    private float tempo=0;
+
     public DbHelper(Context context) {
         super(context, NOME_BASE, null, VERSAO_BASE);
     }
@@ -59,10 +61,13 @@ public class DbHelper extends SQLiteOpenHelper {
         Cursor c = db.rawQuery(sqlSearchData, null);
 
        if(c.moveToFirst()){
+
+            //tempo = tempo + (caminhada.getbMilliseconds());
+
             Log.i("Test Banco", "data encontrada");
             cv.put("data", caminhada.getData());
             cv.put("passos", caminhada.getPassos());
-            cv.put("tempo", caminhada.getbMilliseconds());
+            cv.put("tempo", caminhada.getTempo());
             cv.put("distancia", caminhada.getDistancia());
             cv.put("velocidade", caminhada.getVelocidade());
             cv.put("calorias", caminhada.getCalorias());
@@ -71,7 +76,7 @@ public class DbHelper extends SQLiteOpenHelper {
             Log.i("Test Banco", "data NAO encontrada");
             cv.put("data", caminhada.getData());
             cv.put("passos", caminhada.getPassos());
-            cv.put("tempo", caminhada.getbMilliseconds());
+            cv.put("tempo", caminhada.getTempo());
             cv.put("distancia", caminhada.getDistancia());
             cv.put("velocidade", caminhada.getVelocidade());
             cv.put("calorias", caminhada.getCalorias());
@@ -97,7 +102,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 Caminhada caminhada = new Caminhada();
                 caminhada.setData(c.getString(0));
                 caminhada.setPassos(c.getInt(1));
-                caminhada.setbMilliseconds(c.getLong(2));
+                caminhada.setTempo(c.getLong(2));
                 caminhada.setDistancia(c.getInt(3));
                 caminhada.setVelocidade(c.getInt(4));
                 caminhada.setCalorias(c.getInt(5));
