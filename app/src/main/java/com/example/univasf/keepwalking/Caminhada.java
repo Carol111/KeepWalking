@@ -10,15 +10,19 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.widget.TextView;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class Caminhada{
 
     //Variáveis armazenadas no BANCO
     private String data;
     private int passos;
     private long tempo;
-    private float distancia;                                                                //// Mudei para float a distancia, a velociade e as calorias
-    private float velocidade;
-    private float calorias;
+    private float distancia;
+    private double velocidade;
+    private double calorias;
 
     //Auxiliares de PASSOS
     private Sensor mySensor;
@@ -34,7 +38,14 @@ public class Caminhada{
     static final int min = 60000;
     static final int sec = 1000;
 
-    private TextView vDistancia;                                                            ///////////////////////////////////////////////Nova linha
+    //Auxiliares da DISTÂNCIA
+    private TextView vDistancia;
+
+    //Auxiliares da VELOCIDADE
+    private TextView vVelociade;
+
+    //Auxiliares da CALORIAS
+    private TextView vCaloria;
 
     //////////////////////////////////////////////////////
     //Construtores
@@ -86,7 +97,7 @@ public class Caminhada{
         this.distancia = distancia;
     }
 
-    public float getVelocidade() {
+    public double getVelocidade() {
         return velocidade;
     }
 
@@ -94,7 +105,7 @@ public class Caminhada{
         this.velocidade = velocidade;
     }
 
-    public float getCalorias() {
+    public double getCalorias() {
         return calorias;
     }
 
@@ -116,7 +127,9 @@ public class Caminhada{
     public void startPassos (final Context context){
 
         vPassos = (TextView) ((Activity)context).findViewById(R.id.valuePassos);
-        vDistancia = (TextView) ((Activity)context).findViewById(R.id.valueDistancia);          ///////////////////////////////////////////////Nova linha
+        vDistancia = (TextView) ((Activity)context).findViewById(R.id.valueDistancia);
+        vVelociade = (TextView) ((Activity)context).findViewById(R.id.valueVelocidade);
+        vCaloria = (TextView) ((Activity)context).findViewById(R.id.valueCalorias);
 
 
         sManager = (SensorManager) context.getSystemService(context.SENSOR_SERVICE);
@@ -147,10 +160,28 @@ public class Caminhada{
                             passos++;
                         }
                 }
+                vPassos.setText("" + passos);
 
-                distancia = (float) (passos*0.8);                                           ///////////////////////////////////////////////Nova linha
-                vDistancia.setText("" + distancia);                                         ///////////////////////////////////////////////Nova linha
-                vPassos.setText("" + passos);                                               ////////tirei essa linha de cada if e deixei só essa fora dos if//// Apagar comentário antes do commit///////
+                //////////////////////////////////////////////////////
+                //DISTANCIA
+
+                distancia = (float) (passos*0.8);
+                vDistancia.setText("" + distancia);
+
+
+                //////////////////////////////////////////////////////
+                //VELOCIDADE
+
+                //define nº de casas decimais
+                DecimalFormat df = new DecimalFormat("0.00");
+                // velocidade em m/s
+                velocidade = (1000 * distancia / (SystemClock.elapsedRealtime() - ch.getBase()))/3.6;
+                vVelociade.setText("" + df.format(velocidade));
+
+                //////////////////////////////////////////////////////
+                //CALORIAS
+                calorias = (velocidade/3.6) * 70 * 0.0175 * (SystemClock.elapsedRealtime() - ch.getBase())/60000;
+                vCaloria.setText("" + df.format(calorias));
             }
 
             @Override
@@ -169,9 +200,13 @@ public class Caminhada{
 
     public void clearPassos() {
         passos = 0;
-        distancia=0;                                                                        ///////////////////////////////////////////////Nova linha
+        distancia = 0;
+        velocidade = 0;
+        calorias = 0;
         vPassos.setText("" + passos);
-        vDistancia.setText("" + distancia);                                                 ///////////////////////////////////////////////Nova linha
+        vDistancia.setText("" + distancia);
+        vVelociade.setText("" + velocidade);
+        vCaloria.setText("" + calorias);
     }
 
     //////////////////////////////////////////////////////
@@ -198,15 +233,6 @@ public class Caminhada{
         ch.start();
         ch.stop();
     }
-
-    //////////////////////////////////////////////////////
-    //DISTANCIA
-
-    //////////////////////////////////////////////////////
-    //VELOCIDADE
-
-    //////////////////////////////////////////////////////
-    //CALORIAS
 
     //////////////////////////////////////////////////////
 

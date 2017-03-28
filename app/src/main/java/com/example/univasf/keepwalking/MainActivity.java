@@ -129,9 +129,6 @@ public class MainActivity extends AppCompatActivity {
 
                 caminhada.startPassos(this);
                 caminhada.startChronometer();
-                //metodoDistancia();
-                //metodoVelocidade();
-                //metodoCalorias();
                 return;
             }
             case 'P':{

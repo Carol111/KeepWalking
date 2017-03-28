@@ -29,7 +29,7 @@
     <string name="min">h:m:s</string>
     <string name="m">m</string>
     <string name="m_s">m/s</string>
-    <string name="kcal">kcal</string>
+    <string name="kcal">cal</string>
     <!-- value -->
     <string name="valueDefault">0</string>
     <!-- ************************************ -->
