@@ -165,8 +165,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Inserir dados no banco apenas quando já houve execução dos métodos
         if(btFlag != 'I') dbHelper.insertCaminhada(caminhada);
-
         caminhada.clearPassos();
+        caminhada.pausePassos();
         btFlag = 'I';
 
     }

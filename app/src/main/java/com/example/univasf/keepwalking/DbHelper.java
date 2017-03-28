@@ -27,9 +27,9 @@ public class DbHelper extends SQLiteOpenHelper {
                 + "data TEXT PRIMARY KEY,"
                 + "passos INTEGER,"
                 + "tempo REAL,"
-                + "distancia INTEGER,"
-                + "velocidade INTEGER,"
-                + "calorias INTEGER"
+                + "distancia REAL,"
+                + "velocidade REAL,"
+                + "calorias REAL"
                 + ")";
         db.execSQL(sqlCreateTabelaCaminhada);
 
@@ -68,7 +68,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
             cv.put("passos", c.getLong(1) + caminhada.getPassos());
             cv.put("tempo", c.getLong(2) + caminhada.getTempo());
-            cv.put("distancia", caminhada.getDistancia());
+            cv.put("distancia", c.getFloat(3) + caminhada.getDistancia());
             cv.put("velocidade", caminhada.getVelocidade());
             cv.put("calorias", caminhada.getCalorias());
 
@@ -109,9 +109,9 @@ public class DbHelper extends SQLiteOpenHelper {
                 caminhada.setData(c.getString(0));
                 caminhada.setPassos(c.getInt(1));
                 caminhada.setTempo(c.getLong(2));
-                caminhada.setDistancia(c.getInt(3));
-                caminhada.setVelocidade(c.getInt(4));
-                caminhada.setCalorias(c.getInt(5));
+                caminhada.setDistancia(c.getFloat(3));
+                caminhada.setVelocidade(c.getFloat(4));
+                caminhada.setCalorias(c.getFloat(5));
 
                 listCaminhadas.add(caminhada);
             }while(c.moveToNext());

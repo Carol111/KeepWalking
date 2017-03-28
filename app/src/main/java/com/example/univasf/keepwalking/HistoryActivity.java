@@ -1,5 +1,6 @@
 package com.example.univasf.keepwalking;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -112,14 +113,26 @@ public class HistoryActivity extends AppCompatActivity {
 
     //Limpar o HISTÓRICO
     public void limparDb(View v){
-        dbHelper.limpar();
-        listaCaminhada.removeAll(listaCaminhada);
-        listaCaminhada.clear();
-        listaCaminhada = dbHelper.selectTodasAsCaminhadas();
 
-        ArrayAdapter<Caminhada> adp = new ArrayAdapter<Caminhada>(this, android.R.layout.simple_list_item_1, listaCaminhada);
+        AlertDialog.Builder builder = new AlertDialog.Builder(HistoryActivity.this, R.style.Theme_AppCompat_Dialog_Alert);
 
-        listCaminhada.setAdapter(adp);
+        builder.setMessage("Tem certeza que deseja limpar todo o histórico?");
+        builder.setTitle("Limpar");
+        builder.setNegativeButton("NÃO", null);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dbHelper.limpar();
+                listaCaminhada.removeAll(listaCaminhada);
+                listaCaminhada.clear();
+                listaCaminhada = dbHelper.selectTodasAsCaminhadas();
+                ArrayAdapter<Caminhada> adp = new ArrayAdapter<Caminhada>(HistoryActivity.this, android.R.layout.simple_list_item_1, listaCaminhada);
+
+                listCaminhada.setAdapter(adp);
+            }
+
+        });
+        builder.show();
     }
 
     //Exibir TOTAL geral
@@ -127,9 +140,9 @@ public class HistoryActivity extends AppCompatActivity {
 
         int passos = 0;
         long tempo = 0;
-        int distancia = 0;
-        int velocidade = 0;
-        int calorias = 0;
+        float distancia = 0;
+        float velocidade = 0;
+        float  calorias = 0;
         int n = 0;
 
         if (listaCaminhada.isEmpty()) {

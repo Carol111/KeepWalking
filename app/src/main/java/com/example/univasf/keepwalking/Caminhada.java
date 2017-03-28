@@ -16,9 +16,9 @@ public class Caminhada{
     private String data;
     private int passos;
     private long tempo;
-    private int distancia;
-    private int velocidade;
-    private int calorias;
+    private float distancia;                                                                //// Mudei para float a distancia, a velociade e as calorias
+    private float velocidade;
+    private float calorias;
 
     //Auxiliares de PASSOS
     private Sensor mySensor;
@@ -34,6 +34,8 @@ public class Caminhada{
     static final int min = 60000;
     static final int sec = 1000;
 
+    private TextView vDistancia;                                                            ///////////////////////////////////////////////Nova linha
+
     //////////////////////////////////////////////////////
     //Construtores
 
@@ -42,7 +44,7 @@ public class Caminhada{
         tempo = 0;
         passos = 0;
         direcao = 1;
-
+        distancia = 0;
     }
 
     public Caminhada(String data, int passos, long tempo, int distancia, int velocidade, int calorias){
@@ -76,27 +78,27 @@ public class Caminhada{
         return tempo;
     }
 
-    public int getDistancia() {
+    public float getDistancia() {
         return distancia;
     }
 
-    public void setDistancia(int distancia) {
+    public void setDistancia(float distancia) {
         this.distancia = distancia;
     }
 
-    public int getVelocidade() {
+    public float getVelocidade() {
         return velocidade;
     }
 
-    public void setVelocidade(int velocidade) {
+    public void setVelocidade(float velocidade) {
         this.velocidade = velocidade;
     }
 
-    public int getCalorias() {
+    public float getCalorias() {
         return calorias;
     }
 
-    public void setCalorias(int calorias) {
+    public void setCalorias(float calorias) {
         this.calorias = calorias;
     }
 
@@ -114,6 +116,8 @@ public class Caminhada{
     public void startPassos (final Context context){
 
         vPassos = (TextView) ((Activity)context).findViewById(R.id.valuePassos);
+        vDistancia = (TextView) ((Activity)context).findViewById(R.id.valueDistancia);          ///////////////////////////////////////////////Nova linha
+
 
         sManager = (SensorManager) context.getSystemService(context.SENSOR_SERVICE);
         mySensor = sManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -125,28 +129,28 @@ public class Caminhada{
                     if (sensorEvent.values[2] > 2.6 && direcao == 1) {
                         direcao = -1;
                         passos++;
-                        vPassos.setText("" + passos);
                     }
                     if (sensorEvent.values[2] < 1.5 && direcao == -1)
                         if(sensorEvent.values[2] < -0.6 && direcao == -1){
                             direcao = 1;
                             passos++;
-                            vPassos.setText("" + passos);
                         }
                 }
                 else{
                     if (sensorEvent.values[2] > 2.6 && direcao == 1) {
                         direcao = -1;
                         passos++;
-                            vPassos.setText("" + passos);
                     }
                     if (sensorEvent.values[2] < 1.5 && direcao == -1)
                         if(sensorEvent.values[2] < -0.6 && direcao == -1){
                             direcao = 1;
                             passos++;
-                            vPassos.setText("" + passos);
                         }
                 }
+
+                distancia = (float) (passos*0.8);                                           ///////////////////////////////////////////////Nova linha
+                vDistancia.setText("" + distancia);                                         ///////////////////////////////////////////////Nova linha
+                vPassos.setText("" + passos);                                               ////////tirei essa linha de cada if e deixei só essa fora dos if//// Apagar comentário antes do commit///////
             }
 
             @Override
@@ -165,7 +169,9 @@ public class Caminhada{
 
     public void clearPassos() {
         passos = 0;
+        distancia=0;                                                                        ///////////////////////////////////////////////Nova linha
         vPassos.setText("" + passos);
+        vDistancia.setText("" + distancia);                                                 ///////////////////////////////////////////////Nova linha
     }
 
     //////////////////////////////////////////////////////
