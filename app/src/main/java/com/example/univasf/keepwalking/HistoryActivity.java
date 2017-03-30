@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.List;
 
@@ -31,6 +32,8 @@ public class HistoryActivity extends AppCompatActivity {
     static final int min = 60000;
     static final int sec = 1000;
 
+    DecimalFormat df;
+
     // Metodo para mudar a fonte
     private void changeFont(TextView tv, String fonte) {
         Typeface type = Typeface.createFromAsset(getAssets(), fonte);
@@ -41,6 +44,7 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+        df = new DecimalFormat("0.00");
 
         /* altera fontes */
         TextView textHistory = (TextView) findViewById(R.id.textHistory);
@@ -179,9 +183,9 @@ public class HistoryActivity extends AppCompatActivity {
                     + "\nTempo: " + tempo/hora + "h "
                     + (tempo%hora)/min + "m "
                     + ((tempo%hora)%min)/sec + "s"
-                    + "\nDistância: " + distancia
-                    + " m \nVelocidade média: " + velocidade
-                    + "m/s \nCalorias: " + calorias + " kcal");
+                    + "\nDistância: " + df.format(distancia)
+                    + " m \nVelocidade média: " + df.format(velocidade)
+                    + " km/h \nCalorias: " + df.format(calorias) + " cal");
             builder.setTitle("Total");
             builder.setPositiveButton("OK", null);
             builder.show();

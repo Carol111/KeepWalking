@@ -9,10 +9,7 @@ import android.hardware.SensorManager;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.widget.TextView;
-
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
 public class Caminhada{
 
@@ -52,6 +49,8 @@ public class Caminhada{
     //Auxiliares da CALORIAS
     private TextView vCaloria;
 
+    DecimalFormat df;
+
     //////////////////////////////////////////////////////
     //Construtores
 
@@ -61,6 +60,7 @@ public class Caminhada{
         passos = 0;
         direcao = 1;
         distancia = 0;
+        df = new DecimalFormat("0.00");
     }
 
     public Caminhada(String data, int passos, long tempo, int distancia, int velocidade, int calorias){
@@ -202,7 +202,7 @@ public class Caminhada{
                 //VELOCIDADE
 
                 //define nº de casas decimais
-                DecimalFormat df = new DecimalFormat("0.00");
+                //DecimalFormat df = new DecimalFormat("0.00");
                 // velocidade em m/s
                 velocidade = (1000 * distancia / (SystemClock.elapsedRealtime() - ch.getBase()))/3.6;
                 vVelociade.setText("" + df.format(velocidade));
@@ -273,9 +273,9 @@ public class Caminhada{
                 + tempo/hora + "h "
                 + (tempo%hora)/min + "m "
                 + ((tempo%hora)%min)/sec + "s | "
-                + distancia + " m | "
-                + velocidade + " m/s | "
-                + calorias + " kcal";
+                + df.format(distancia) + " m \n"
+                + df.format(velocidade) + " km/h | "
+                + df.format(calorias) + " cal";
     }
 
 }
