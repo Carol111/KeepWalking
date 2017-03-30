@@ -31,6 +31,11 @@ public class Caminhada{
     private SensorEventListener sListener;
     private int direcao;
 
+    private long lastUpdate = 0;
+    private float last_x, last_z;
+    //private float last_y;
+    private static final int SHAKE_THRESHOLD = 390;
+
     //Auxiliares do TEMPO
     private Chronometer ch;
     private long milliseconds;
@@ -138,7 +143,7 @@ public class Caminhada{
         sListener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent sensorEvent) {
-                if(sensorEvent.values[1] > 0) {
+                /*if(sensorEvent.values[1] > 0) {
                     if (sensorEvent.values[2] > 2.6 && direcao == 1) {
                         direcao = -1;
                         passos++;
@@ -159,7 +164,31 @@ public class Caminhada{
                             direcao = 1;
                             passos++;
                         }
+                }*/
+
+                if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+                    float x = sensorEvent.values[0];
+                    //float y = sensorEvent.values[1];
+                    float z = sensorEvent.values[2];
+
+                    long curTime = System.currentTimeMillis();
+
+                    if ((curTime - lastUpdate) > 100) {
+                        long diffTime = (curTime - lastUpdate);
+                        lastUpdate = curTime;
+
+                        float speed = Math.abs(x + z - last_x - last_z)/ diffTime * 10000;
+
+                        if (speed > SHAKE_THRESHOLD) {
+                            passos++;
+                        }
+
+                        last_x = x;
+                        //last_y = y;
+                        last_z = z;
+                    }
                 }
+
                 vPassos.setText("" + passos);
 
                 //////////////////////////////////////////////////////
