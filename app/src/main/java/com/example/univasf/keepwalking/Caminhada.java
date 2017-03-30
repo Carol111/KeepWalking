@@ -31,7 +31,7 @@ public class Caminhada{
     private long lastUpdate = 0;
     private float last_x, last_z;
     //private float last_y;
-    private static final int SHAKE_THRESHOLD = 390;
+    private static final int SHAKE_THRESHOLD = 300;
 
     //Auxiliares do TEMPO
     private Chronometer ch;
