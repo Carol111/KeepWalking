@@ -31,7 +31,7 @@ public class Caminhada{
     private long lastUpdate = 0;
     private float last_x, last_z;
     //private float last_y;
-    private static final int SHAKE_THRESHOLD = 300;
+    private static final int SHAKE_THRESHOLD = 400;
 
     //Auxiliares do TEMPO
     private Chronometer ch;
@@ -167,7 +167,7 @@ public class Caminhada{
                 }*/
 
                 if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-                    float x = sensorEvent.values[0];
+                    //float x = sensorEvent.values[0];
                     //float y = sensorEvent.values[1];
                     float z = sensorEvent.values[2];
 
@@ -177,13 +177,13 @@ public class Caminhada{
                         long diffTime = (curTime - lastUpdate);
                         lastUpdate = curTime;
 
-                        float speed = Math.abs(x + z - last_x - last_z)/ diffTime * 10000;
+                        float speed = Math.abs(z - last_z)/ diffTime * 10000;
 
                         if (speed > SHAKE_THRESHOLD) {
                             passos++;
                         }
 
-                        last_x = x;
+                        //last_x = x;
                         //last_y = y;
                         last_z = z;
                     }
