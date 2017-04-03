@@ -57,10 +57,11 @@
     <!-- ****************** TELA AJUDA ****************** -->
     <string name="ajuda">Ajuda</string>
     <string name="infoAjuda">Clique no botão INICIAR ao começar sua caminhada,
-        caso queira dar uma pausa, clique em PAUSAR, depois poderá clicar em CONTINUAR
+        caso queira dar uma pausa, toque em PAUSAR, depois poderá clicar em CONTINUAR
         para continuar contado os dados. \n\n
-        O botão SALVAR armazenará os valores no histórico
-        e limpará os dados da tela inicial, assim você poderá começar uma nova caminhada com novos dados. \n\n
+        O botão ZERAR limpará os dados da tela inicial e não salvará nenhum valor atual no histórico. \n\n
+        O botão SALVAR, assim como o botão ZERAR, limpará os valores atuais da tela,
+        mas irá armazena-los no histórico, assim você poderá começar uma nova caminhada com novos dados. \n\n
         Na opção HISTÓRICO é possível ver o resumo dos dados da caminhada a cada dia
         e o total geral. Clique em LIMPAR para zerar o histórico.</string>
     <!-- ************************************ -->

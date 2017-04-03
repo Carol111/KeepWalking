@@ -152,9 +152,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickSalvar(View v){
-
-        btIniciar.setText(R.string.inic);
-        caminhada.clearChronometer(btFlag);
+        if(btFlag!='I') {
+            btIniciar.setText(R.string.inic);
+            caminhada.clearChronometer(btFlag);
 
         /*/ Caixa de diálogo de TESTES
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.Theme_AppCompat_Dialog_Alert);
@@ -163,20 +163,22 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
         ////////////////////////////*/
 
-        //Inserir dados no banco apenas quando já houve execução dos métodos
-        if(btFlag != 'I') dbHelper.insertCaminhada(caminhada);
-        caminhada.clearPassos();
-        caminhada.pausePassos();
-        btFlag = 'I';
+            //Inserir dados no banco apenas quando já houve execução dos métodos
+            dbHelper.insertCaminhada(caminhada);
+            caminhada.clearPassos();
+            caminhada.pausePassos();
+            btFlag = 'I';
+        }
     }
 
     public void clickZerar(View v){
+        if(btFlag!='I') {
+            btIniciar.setText(R.string.inic);
+            caminhada.clearChronometer(btFlag);
 
-        btIniciar.setText(R.string.inic);
-        caminhada.clearChronometer(btFlag);
-
-        caminhada.clearPassos();
-        caminhada.pausePassos();
-        btFlag = 'I';
+            caminhada.clearPassos();
+            caminhada.pausePassos();
+            btFlag = 'I';
+        }
     }
 }

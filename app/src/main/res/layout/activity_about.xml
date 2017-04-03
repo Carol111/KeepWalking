@@ -43,7 +43,7 @@
         android:layout_below="@+id/textDescricao"
         android:layout_marginTop="20dp"
         android:text="@string/integrantesA"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"/>
 
@@ -64,7 +64,7 @@
         android:layout_below="@+id/textIntegrantesB"
         android:layout_marginTop="20dp"
         android:text="@string/contatoA"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"/>
 

@@ -194,8 +194,8 @@ public class Caminhada{
                 //////////////////////////////////////////////////////
                 //DISTANCIA
 
-                distancia = (float) (passos*0.8);
-                vDistancia.setText("" + distancia);
+                distancia = (float) (passos*0.01);
+                vDistancia.setText("" + df.format(distancia));
 
 
                 //////////////////////////////////////////////////////
@@ -204,12 +204,12 @@ public class Caminhada{
                 //define nº de casas decimais
                 //DecimalFormat df = new DecimalFormat("0.00");
                 // velocidade em m/s
-                velocidade = (1000 * distancia / (SystemClock.elapsedRealtime() - ch.getBase()))/3.6;
+                velocidade = (1000 * distancia / (SystemClock.elapsedRealtime() - ch.getBase()))*3.6;
                 vVelociade.setText("" + df.format(velocidade));
 
                 //////////////////////////////////////////////////////
                 //CALORIAS
-                calorias = (velocidade/3.6) * 70 * 0.0175 * (SystemClock.elapsedRealtime() - ch.getBase())/60000;
+                calorias = (velocidade*3.6) * 70 * 0.0175 * (SystemClock.elapsedRealtime() - ch.getBase())/60000;
                 vCaloria.setText("" + df.format(calorias));
             }
 
