@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button btIniciar;
     Button btZerar;
+    Button btSalvar;
 
     char btFlag;
     DbHelper dbHelper;
@@ -70,8 +71,10 @@ public class MainActivity extends AppCompatActivity {
         // Buttons
         btIniciar = (Button) findViewById(R.id.btIniciar);
         btZerar = (Button) findViewById(R.id.btZerar);
+        btSalvar = (Button) findViewById(R.id.btSalvar);
         changeFont(btIniciar, "fonts/annabelle.ttf");
         changeFont(btZerar, "fonts/annabelle.ttf");
+        changeFont(btSalvar, "fonts/annabelle.ttf");
 
         //Values
         caminhada.setCh((Chronometer) findViewById(R.id.chronometer));
@@ -148,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void clickZerar(View v){
+    public void clickSalvar(View v){
 
         btIniciar.setText(R.string.inic);
         caminhada.clearChronometer(btFlag);
@@ -165,6 +168,15 @@ public class MainActivity extends AppCompatActivity {
         caminhada.clearPassos();
         caminhada.pausePassos();
         btFlag = 'I';
+    }
 
+    public void clickZerar(View v){
+
+        btIniciar.setText(R.string.inic);
+        caminhada.clearChronometer(btFlag);
+
+        caminhada.clearPassos();
+        caminhada.pausePassos();
+        btFlag = 'I';
     }
 }
