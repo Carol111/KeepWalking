@@ -31,7 +31,7 @@ public class Caminhada{
     private long lastUpdate = 0;
     private float last_x, last_z;
     //private float last_y;
-    private static final int SHAKE_THRESHOLD = 400;
+    private static final int SHAKE_THRESHOLD = 335;
 
     //Auxiliares do TEMPO
     private Chronometer ch;
@@ -194,7 +194,7 @@ public class Caminhada{
                 //////////////////////////////////////////////////////
                 //DISTANCIA
 
-                distancia = (float) (passos*0.01);
+                distancia = (float) (passos*0.8);
                 vDistancia.setText("" + df.format(distancia));
 
 
