@@ -29,8 +29,7 @@ public class Caminhada{
     private int direcao;
 
     private long lastUpdate = 0;
-    private float last_x, last_z;
-    //private float last_y;
+    private float last_z;
     private static final int SHAKE_THRESHOLD = 335;
 
     //Auxiliares do TEMPO
@@ -143,32 +142,11 @@ public class Caminhada{
         sListener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent sensorEvent) {
-                /*if(sensorEvent.values[1] > 0) {
-                    if (sensorEvent.values[2] > 2.6 && direcao == 1) {
-                        direcao = -1;
-                        passos++;
-                    }
-                    if (sensorEvent.values[2] < 1.5 && direcao == -1)
-                        if(sensorEvent.values[2] < -0.6 && direcao == -1){
-                            direcao = 1;
-                            passos++;
-                        }
-                }
-                else{
-                    if (sensorEvent.values[2] > 2.6 && direcao == 1) {
-                        direcao = -1;
-                        passos++;
-                    }
-                    if (sensorEvent.values[2] < 1.5 && direcao == -1)
-                        if(sensorEvent.values[2] < -0.6 && direcao == -1){
-                            direcao = 1;
-                            passos++;
-                        }
-                }*/
+
+                /////////////////////////////////////////////////////////////
+                //PASSOS
 
                 if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-                    //float x = sensorEvent.values[0];
-                    //float y = sensorEvent.values[1];
                     float z = sensorEvent.values[2];
 
                     long curTime = System.currentTimeMillis();
@@ -182,9 +160,6 @@ public class Caminhada{
                         if (speed > SHAKE_THRESHOLD) {
                             passos++;
                         }
-
-                        //last_x = x;
-                        //last_y = y;
                         last_z = z;
                     }
                 }
@@ -200,9 +175,6 @@ public class Caminhada{
 
                 //////////////////////////////////////////////////////
                 //VELOCIDADE
-
-                //define nº de casas decimais
-                //DecimalFormat df = new DecimalFormat("0.00");
                 // velocidade em m/s
                 velocidade = (1000 * distancia / (SystemClock.elapsedRealtime() - ch.getBase()))*3.6;
                 vVelociade.setText("" + df.format(velocidade));

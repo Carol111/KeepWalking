@@ -2,7 +2,6 @@ package com.example.univasf.keepwalking;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.view.MenuItem;
@@ -155,13 +154,6 @@ public class MainActivity extends AppCompatActivity {
         if(btFlag!='I') {
             btIniciar.setText(R.string.inic);
             caminhada.clearChronometer(btFlag);
-
-        /*/ Caixa de diálogo de TESTES
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.Theme_AppCompat_Dialog_Alert);
-        builder.setMessage("passos: " + caminhada.getContador());
-        builder.setPositiveButton("OK", null);
-        builder.show();
-        ////////////////////////////*/
 
             //Inserir dados no banco apenas quando já houve execução dos métodos
             dbHelper.insertCaminhada(caminhada);
