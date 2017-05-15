@@ -1,23 +1,35 @@
 package com.example.univasf.keepwalking;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.v4.app.ActivityCompat;
 import android.widget.Chronometer;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.widget.TextView;
+
 import java.text.DecimalFormat;
 
-public class Caminhada{
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.content.Context;
+
+
+public class Caminhada {
 
     //Variáveis armazenadas no BANCO
     private String data;
     private int passos;
     private long tempo;
     private float distancia;
+    private float dist2=0;
     private double velocidade;
     private double calorias;
 
@@ -27,10 +39,13 @@ public class Caminhada{
     private SensorManager sManager;
     private SensorEventListener sListener;
     private int direcao;
+    private LocationManager vlocationManager;
+    private LocationListener vlocationListener;
+
 
     private long lastUpdate = 0;
     private float last_z;
-    private static final int SHAKE_THRESHOLD = 335;
+    private static final int SHAKE_THRESHOLD = 310;
 
     //Auxiliares do TEMPO
     private Chronometer ch;
@@ -53,7 +68,7 @@ public class Caminhada{
     //////////////////////////////////////////////////////
     //Construtores
 
-    public Caminhada(){
+    public Caminhada() {
         milliseconds = 0;
         tempo = 0;
         passos = 0;
@@ -62,7 +77,7 @@ public class Caminhada{
         df = new DecimalFormat("0.00");
     }
 
-    public Caminhada(String data, int passos, long tempo, int distancia, int velocidade, int calorias){
+    public Caminhada(String data, int passos, long tempo, int distancia, int velocidade, int calorias) {
         this.data = data;
         this.passos = passos;
         this.tempo = tempo;
@@ -85,11 +100,11 @@ public class Caminhada{
         this.ch = ch;
     }
 
-    public void setTempo(long bMilliseconds){
+    public void setTempo(long bMilliseconds) {
         this.tempo = bMilliseconds;
     }
 
-    public long getTempo(){
+    public long getTempo() {
         return tempo;
     }
 
@@ -128,23 +143,93 @@ public class Caminhada{
     //////////////////////////////////////////////////////
     //PASSOS
 
-    public void startPassos (final Context context){
+    public void startPassos(final Context context) {
 
-        vPassos = (TextView) ((Activity)context).findViewById(R.id.valuePassos);
-        vDistancia = (TextView) ((Activity)context).findViewById(R.id.valueDistancia);
-        vVelociade = (TextView) ((Activity)context).findViewById(R.id.valueVelocidade);
-        vCaloria = (TextView) ((Activity)context).findViewById(R.id.valueCalorias);
+        vPassos = (TextView) ((Activity) context).findViewById(R.id.valuePassos);
+        vDistancia = (TextView) ((Activity) context).findViewById(R.id.valueDistancia);
+        vVelociade = (TextView) ((Activity) context).findViewById(R.id.valueVelocidade);
+        vCaloria = (TextView) ((Activity) context).findViewById(R.id.valueCalorias);
 
 
         sManager = (SensorManager) context.getSystemService(context.SENSOR_SERVICE);
         mySensor = sManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
+        vlocationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
+
+/*
+        vlocationListener = new LocationListener() {
+            float count=0, dist=0, dist2=0;
+            boolean flag=false;
+            double lat1, lat2, log1, log2;
+
+            @Override
+            public void onLocationChanged(Location location) {
+                Location location1= new Location("Location1");
+                Location location2= new Location("Location2");
+
+                if(flag==true){
+                    location2.setLatitude(location.getLatitude());
+                    location2.setLongitude(location.getLongitude());
+                    lat2 = 60*location.getLatitude()*1852;
+                    log2 = 60*location.getLongitude()*1852;
+
+                    dist2 += location1.distanceTo(location2);
+                    vCaloria.setText("" + df.format(dist2));
+                    count--;
+
+                }
+                else {count++;}
+
+                if(count==1){
+                    location1.setLatitude(location.getLatitude());
+                    location1.setLongitude(location.getLongitude());
+                    lat1 = 60*location.getLatitude()*1852;
+                    log1 = 60*location.getLongitude()*1852;
+
+
+                    flag = true;
+                }
+                else {flag= false;}
+
+                    dist += Math.sqrt(((lat1-lat2)*(lat1-lat2)) + (log2 - log1)*(log2 - log1));
+                    vVelociade.setText("" + df.format(dist));
+
+
+            }
+
+
+            @Override
+            public void onStatusChanged(String s, int i, Bundle bundle) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String s) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String s) {
+
+            }
+
+        };
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        vlocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 0, vlocationListener);
+*/
+
         sListener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent sensorEvent) {
-
-                /////////////////////////////////////////////////////////////
-                //PASSOS
 
                 if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
                     float z = sensorEvent.values[2];

@@ -123,7 +123,7 @@ public class HistoryActivity extends AppCompatActivity {
         builder.setMessage("Tem certeza que deseja limpar todo o histórico?");
         builder.setTitle("Limpar");
         builder.setNegativeButton("NÃO", null);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dbHelper.limpar();
